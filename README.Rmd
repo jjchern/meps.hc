@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 
 # About `meps.hc`
 
+[![Travis-CI Build Status](https://travis-ci.org/jjchern/meps.hc.svg?branch=master)](https://travis-ci.org/jjchern/meps.hc)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jjchern/meps.hc?branch=master&svg=true)](https://ci.appveyor.com/project/jjchern/meps.hc)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/meps.hc)](https://cran.r-project.org/package=meps.hc)
+
 The goal of `meps.hc` is to wrap the Annual Consolidated Data Files from the 
 Medical Expenditure Panel Survey (`meps`) Household Component (`hc`) in an R 
 data package. All variable labels and value labels are included.
@@ -39,3 +43,13 @@ devtools::install_github("jjchern/meps.hc")
 # To uninstall the package, use:
 # remove.packages("meps.hc")
 ```
+
+# Usage
+
+```{r}
+# Load tibble for better printout
+library(tibble)
+
+meps.hc::f2014
+```
+
