@@ -1,0 +1,15 @@
+Package: meps.hc
+Title: MEPS Household Component Annual Consolidated Data Files
+Version: 0.0.1
+Authors@R: 'JJ Chen <jiajia.chern@gmail.com> [aut, cre]'
+Description: Contains the Annual Consolidated Data Files from the 
+    Medical Expenditure Panel Survey (MEPS) Household Component (HC). All 
+    variable labels and value labels are included.
+Depends: R (>= 3.1.0)
+License: CC0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/jjchern/meps.hc
+BugReports: https://github.com/jjchern/meps.hc/issues
+RoxygenNote: 6.0.1.9000
+Roxygen: list(markdown = TRUE)
