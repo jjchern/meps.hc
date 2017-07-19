@@ -70,7 +70,8 @@
 <a href="#about-meps-hc" class="anchor"></a>About <code>meps.hc</code>
 </h1></div>
 
-<p>The goal of <code>meps.hc</code> is to wrap the Annual Consolidated Data Files from the Medical Expenditure Panel Survey (<code>meps</code>) Household Component (<code>hc</code>) in an R data package. All variable labels and value labels are included.</p>
+<p>The goal of <code>meps.hc</code> is to wrap the Annual Consolidated Data Files from the Medical Expenditure Panel Survey (<code>meps</code>) Household Component (<code>hc</code>) in an R data package.</p>
+<p>All variable labels and value labels are included. Variable names are in lowercase.</p>
 <p>For more information about the consolidated MEPS-HC files, see <a href="https://meps.ahrq.gov/mepsweb/data_stats/download_data_files_results.jsp?cboDataYear=All&amp;cboDataTypeY=1%2CHousehold+Full+Year+File&amp;buttonYearandDataType=Search&amp;cboPufNumber=All&amp;SearchTitle=Consolidated+Data">the AHRQ webpages</a>, or the example code from the <a href="https://github.com/HHS-AHRQ/MEPS"><code>HHS-AHRQ/MEPS</code> repo</a> by <a href="https://github.com/e-mitchell"><code>@e-mitchell</code></a>.</p>
 <p>For another attempt of downloading the MEPS data, see <a href="https://github.com/ajdamico/asdfree/tree/master/Medical%20Expenditure%20Panel%20Survey">the <code>ajdamico/asdfree</code> repo</a> by <a href="https://github.com/ajdamico"><code>@ajdamico</code></a>.</p>
 <p>Currently the package includes data from 2011-2014. The rest of the files (1996-2010) will be packaged soon.</p>
@@ -99,8 +100,11 @@ devtools::<span class="kw">install_github</span>(<span class="st">"jjchern/meps.
 <div id="usage" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load tibble for better printout</span>
-<span class="kw">library</span>(tibble)
+<div id="load-the-datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#load-the-datasets" class="anchor"></a>Load the datasets</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load tibble via tidyverse for better printout</span>
+<span class="kw">library</span>(tidyverse)
 
 meps.hc::f2014
 <span class="co">#&gt; # A tibble: 34,875 x 1,838</span>
@@ -142,6 +146,512 @@ meps.hc::f2014
 <span class="co">#&gt; #   marry53x &lt;fctr&gt;, marry14x &lt;fctr&gt;, spouid31 &lt;fctr&gt;, spouid42 &lt;fctr&gt;,</span>
 <span class="co">#&gt; #   spouid53 &lt;fctr&gt;, spouid14 &lt;fctr&gt;, spouin31 &lt;fctr&gt;, spouin42 &lt;fctr&gt;,</span>
 <span class="co">#&gt; #   spouin53 &lt;fctr&gt;, spouin14 &lt;fctr&gt;, ...</span></code></pre></div>
+</div>
+<div id="replicate-estimates-from-the-meps-summary-table" class="section level2">
+<h2 class="hasAnchor">
+<a href="#replicate-estimates-from-the-meps-summary-table" class="anchor"></a>Replicate Estimates from the MEPS Summary Table</h2>
+<p>This section replicates the first row of <a href="https://meps.ahrq.gov/mepsweb/data_stats/tables_compendia_hh_interactive.jsp?_SERVICE=MEPSSocket0&amp;_PROGRAM=MEPSPGM.TC.SAS&amp;File=HCFY2013&amp;Table=HCFY2013_PLEXP_%40&amp;VAR1=AGE&amp;VAR2=SEX&amp;VAR3=RACETH5C&amp;VAR4=INSURCOV&amp;VAR5=POVCAT13&amp;VAR6=REGION&amp;VAR7=HEALTH&amp;VARO1=4+17+44+64&amp;VARO2=1&amp;VARO3=1&amp;VARO4=1&amp;VARO5=1&amp;VARO6=1&amp;VARO7=1&amp;_Debug=">MEPS summary table for 2013 data</a>.</p>
+<p>The code are modified from</p>
+<ul>
+<li>
+<a href="https://github.com/HHS-AHRQ/MEPS/tree/master/R"><code>HHS-AHRQ/MEPS/R:</code> Analyzing MEPS data using R</a>, and</li>
+<li><a href="https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_1.R"><code>HHS-AHRQ/MEPS/R/example_1.R</code></a></li>
+</ul>
+<div id="show-variable-labels-for-selected-variables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#show-variable-labels-for-selected-variables" class="anchor"></a>Show variable labels for selected variables</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meps.hc::f2013 %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(varpsu, varstr, perwt13f, totexp13,
+           totslf13, totptr13, totmcr13, totmcd13,
+           totva13, totwcp13, tototh13) %&gt;%<span class="st"> </span>
+<span class="st">    </span>labelled::<span class="kw">var_label</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">enframe</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">unnest</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="left">value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">varpsu</td>
+<td align="left">variance estimation psu - 2013 .</td>
+</tr>
+<tr class="even">
+<td align="left">varstr</td>
+<td align="left">variance estimation stratum - 2013</td>
+</tr>
+<tr class="odd">
+<td align="left">perwt13f</td>
+<td align="left">final person weight, 2013</td>
+</tr>
+<tr class="even">
+<td align="left">totexp13</td>
+<td align="left">total health care exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">totslf13</td>
+<td align="left">total amt paid by self/family 13</td>
+</tr>
+<tr class="even">
+<td align="left">totptr13</td>
+<td align="left">total amt paid by prv &amp; tri 13</td>
+</tr>
+<tr class="odd">
+<td align="left">totmcr13</td>
+<td align="left">total amt paid by medicare 13</td>
+</tr>
+<tr class="even">
+<td align="left">totmcd13</td>
+<td align="left">total amt paid by medicaid 13</td>
+</tr>
+<tr class="odd">
+<td align="left">totva13</td>
+<td align="left">total amt paid by va/champva 13</td>
+</tr>
+<tr class="even">
+<td align="left">totwcp13</td>
+<td align="left">total amt paid by workers comp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">tototh13</td>
+<td align="left">total amt paid by oth combined 13</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estimate-total-healthcare-expenditures-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#estimate-total-healthcare-expenditures-in-2013" class="anchor"></a>Estimate total healthcare expenditures in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(survey)
+
+<span class="co"># 'adjust': center the stratum at the population mean </span>
+<span class="co"># rather than the stratum mean</span>
+<span class="kw">options</span>(<span class="dt">survey.lonely.psu =</span> <span class="st">'adjust'</span>)
+
+mepsdsgn =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svydesign">svydesign</a></span>(<span class="dt">id =</span> ~varpsu, <span class="co"># cluster ids</span>
+                     <span class="dt">strata =</span> ~varstr, 
+                     <span class="dt">weights =</span> ~perwt13f, <span class="co"># sampling weights</span>
+                     <span class="dt">data =</span> meps.hc::f2013,
+                     <span class="dt">nest =</span> <span class="ot">TRUE</span>) <span class="co"># enforce nesting within strata</span>
+
+<span class="co"># Replicate estimates reported in </span>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/surveysummary">svytotal</a></span>(~totexp13, <span class="dt">design =</span> mepsdsgn) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">as_tibble</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">transmute</span>(<span class="st">`</span><span class="dt">2013 US Tot. Exp. (in millions)</span><span class="st">`</span> =<span class="st"> </span>total /<span class="st"> </span><span class="dv">1000000</span>,
+              <span class="st">`</span><span class="dt">Std. Err. (in millions)</span><span class="st">`</span> =<span class="st"> </span>totexp13 /<span class="st"> </span><span class="dv">1000000</span>) %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">2013 US Tot. Exp. (in millions)</th>
+<th align="right">Std. Err. (in millions)</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">1400523</td>
+<td align="right">43378.01</td>
+</tr></tbody>
+</table>
+</div>
+<div id="total-us-population-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#total-us-population-in-2013" class="anchor"></a>Total US population in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Standard errors are not applicable to population control totals, so we don't need to use a survey function here.</span>
+<span class="co"># The total population is equal to the sum of survey weights (PERWT13F).</span>
+<span class="kw">sum</span>(meps.hc::f2013$perwt13f) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">as_tibble</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">transmute</span>(<span class="st">`</span><span class="dt">Population (in thousands)</span><span class="st">`</span> =<span class="st"> </span>value /<span class="st"> </span><span class="dv">1000</span>,
+              <span class="st">`</span><span class="dt">Std. Err.</span><span class="st">`</span> =<span class="st"> "NA"</span>) %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">0</span>)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Population (in thousands)</th>
+<th align="left">Std. Err.</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">315722</td>
+<td align="left">NA</td>
+</tr></tbody>
+</table>
+</div>
+<div id="percent-of-people-with-any-expense-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#percent-of-people-with-any-expense-in-2013" class="anchor"></a>Percent of people with any expense in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To calculate the percent of people with any expense, first update mepsdsgn with a new indicator variable for persons with an expense:</span>
+<span class="kw">update</span>(mepsdsgn, <span class="dt">any_expense =</span> (totexp13 &gt;<span class="st"> </span><span class="dv">0</span>) *<span class="st"> </span><span class="dv">1</span>) -&gt;<span class="st"> </span>mepsdsgn
+
+<span class="co"># Then run the 'svymean' function</span>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/surveysummary">svymean</a></span>(~any_expense, <span class="dt">design =</span> mepsdsgn) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">as_tibble</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">transmute</span>(<span class="st">`</span><span class="dt">Percent with expense</span><span class="st">`</span> =<span class="st"> </span>mean *<span class="st"> </span><span class="dv">100</span>,
+              <span class="st">`</span><span class="dt">Std. Err.</span><span class="st">`</span> =<span class="st"> </span>any_expense *<span class="st"> </span><span class="dv">100</span>) %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Percent with expense</th>
+<th align="right">Std. Err.</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">84.4</td>
+<td align="right">0.4</td>
+</tr></tbody>
+</table>
+</div>
+<div id="mean-and-median-expense-per-person-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mean-and-median-expense-per-person-in-2013" class="anchor"></a>Mean and median expense per person in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To get expenses per person with an expense, use the 'subset' function to limit the dataset to persons that have an expense (i.e. any_expense == 1).</span>
+
+<span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/surveysummary">svymean</a></span>(~totexp13, <span class="dt">design =</span> <span class="kw">subset</span>(mepsdsgn, any_expense ==<span class="st"> </span><span class="dv">1</span>)) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">as_tibble</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">transmute</span>(<span class="st">`</span><span class="dt">Mean (per person with an expense)</span><span class="st">`</span> =<span class="st"> </span>mean,
+              <span class="st">`</span><span class="dt">Std. Err.</span><span class="st">`</span> =<span class="st"> </span>totexp13) %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">0</span>)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Mean (per person with an expense)</th>
+<th align="right">Std. Err.</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">5256</td>
+<td align="right">118</td>
+</tr></tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svyquantile">svyquantile</a></span>(~totexp13, 
+            <span class="dt">design =</span> <span class="kw">subset</span>(mepsdsgn, any_expense==<span class="dv">1</span>),
+            <span class="dt">quantiles =</span> <span class="fl">0.5</span>) %&gt;%
+<span class="st">    </span><span class="kw">as_tibble</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">transmute</span>(<span class="st">`</span><span class="dt">Median (per person with an expense)</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">0.5</span><span class="st">`</span>,
+              <span class="st">`</span><span class="dt">Std. Err.</span><span class="st">`</span> =<span class="st"> "NA"</span>) %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="right">Median (per person with an expense)</th>
+<th align="left">Std. Err.</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">1389</td>
+<td align="left">NA</td>
+</tr></tbody>
+</table>
+</div>
+<div id="distribution-by-source-of-payment-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#distribution-by-source-of-payment-in-2013" class="anchor"></a>Distribution by source of payment in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># Before estimating percentages for 'Other' insurance, we need to adjust this variable to match the online table:</span>
+<span class="co"># Other = VA + worker's comp + other sources.</span>
+<span class="kw">update</span>(mepsdsgn, <span class="dt">tototh13 =</span> totva13 +<span class="st"> </span>totwcp13 +<span class="st"> </span>tototh13) -&gt;<span class="st"> </span>mepsdsgn
+
+<span class="co"># For percent of total, use the `svyratio` function, and specify the numerator and denominator.</span>
+<span class="co"># Use a '+' sign to calculate estimates for multiple variables.</span>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svyratio">svyratio</a></span>(~totslf13 +<span class="st"> </span>totptr13 +<span class="st"> </span>totmcr13 +<span class="st"> </span>totmcd13 +<span class="st"> </span>tototh13,
+         <span class="dt">denominator =</span> ~totexp13,
+         <span class="dt">design =</span> mepsdsgn) %&gt;%<span class="st"> </span>
+<span class="st">         </span>{<span class="kw">tibble</span>(
+             <span class="st">`</span><span class="dt">Percent of total expenses by source of payment</span><span class="st">`</span> =<span class="st"> </span>
+<span class="st">                         </span><span class="kw">coef</span>(.) %&gt;%<span class="st"> </span><span class="kw">names</span>(),
+             <span class="st">`</span><span class="dt">Estimates</span><span class="st">`</span> =<span class="st"> </span><span class="kw">coef</span>(.) *<span class="st"> </span><span class="dv">100</span>, 
+             <span class="st">`</span><span class="dt">Std. Err.</span><span class="st">`</span> =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/SE">SE</a></span>(.) *<span class="st"> </span><span class="dv">100</span>
+         )} %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Percent of total expenses by source of payment</th>
+<th align="right">Estimates</th>
+<th align="right">Std. Err.</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">totslf13/totexp13</td>
+<td align="right">13.8</td>
+<td align="right">0.4</td>
+</tr>
+<tr class="even">
+<td align="left">totptr13/totexp13</td>
+<td align="right">40.6</td>
+<td align="right">1.1</td>
+</tr>
+<tr class="odd">
+<td align="left">totmcr13/totexp13</td>
+<td align="right">25.3</td>
+<td align="right">0.9</td>
+</tr>
+<tr class="even">
+<td align="left">totmcd13/totexp13</td>
+<td align="right">12.4</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="odd">
+<td align="left">tototh13/totexp13</td>
+<td align="right">7.9</td>
+<td align="right">0.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="replicate-figure-1-in-meps-statistical-brief-491" class="section level2">
+<h2 class="hasAnchor">
+<a href="#replicate-figure-1-in-meps-statistical-brief-491" class="anchor"></a>Replicate Figure 1 in MEPS Statistical Brief #491</h2>
+<p>This section replicates Figure 1 in <a href="https://meps.ahrq.gov/data_files/publications/st491/stat491.shtml">MEPS Statistical Brief #491</a></p>
+<p>The code are modified from</p>
+<ul>
+<li>
+<a href="https://github.com/HHS-AHRQ/MEPS/tree/master/R"><code>HHS-AHRQ/MEPS/R:</code> Analyzing MEPS data using R</a>, and</li>
+<li><a href="https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_1.R"><code>HHS-AHRQ/MEPS/R/example_1.R</code></a></li>
+<li><a href="https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_2.R"><code>HHS-AHRQ/MEPS/R/example_2.R</code></a></li>
+</ul>
+<div id="show-variable-labels-for-selected-variables-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#show-variable-labels-for-selected-variables-1" class="anchor"></a>Show variable labels for selected variables</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meps.hc::f2013 %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(varpsu, varstr, perwt13f, totexp13,
+           obvexp13, optexp13, ertexp13,
+           hhaexp13, hhnexp13, visexp13, othexp13,
+           iptexp13, rxexp13, dvtexp13,
+           agelast) %&gt;%<span class="st"> </span>
+<span class="st">    </span>labelled::<span class="kw">var_label</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">enframe</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">unnest</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="left">value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">varpsu</td>
+<td align="left">variance estimation psu - 2013 .</td>
+</tr>
+<tr class="even">
+<td align="left">varstr</td>
+<td align="left">variance estimation stratum - 2013</td>
+</tr>
+<tr class="odd">
+<td align="left">perwt13f</td>
+<td align="left">final person weight, 2013</td>
+</tr>
+<tr class="even">
+<td align="left">totexp13</td>
+<td align="left">total health care exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">obvexp13</td>
+<td align="left">total office-based exp 13</td>
+</tr>
+<tr class="even">
+<td align="left">optexp13</td>
+<td align="left">total outpatient fac + dr exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">ertexp13</td>
+<td align="left">total er facility + dr exp 13</td>
+</tr>
+<tr class="even">
+<td align="left">hhaexp13</td>
+<td align="left">total home health agency exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">hhnexp13</td>
+<td align="left">total home health non-agncy exp 13</td>
+</tr>
+<tr class="even">
+<td align="left">visexp13</td>
+<td align="left">total glasses/contact lens exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">othexp13</td>
+<td align="left">tot other equip/sply (excl diab) exp 13</td>
+</tr>
+<tr class="even">
+<td align="left">iptexp13</td>
+<td align="left">tot hosp ip facility + dr exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">rxexp13</td>
+<td align="left">total rx-exp 13</td>
+</tr>
+<tr class="even">
+<td align="left">dvtexp13</td>
+<td align="left">total dental care exp 13</td>
+</tr>
+<tr class="odd">
+<td align="left">agelast</td>
+<td align="left">person s age last time eligible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estimate-distribution-of-expense-by-tos-in-2013" class="section level3">
+<h3 class="hasAnchor">
+<a href="#estimate-distribution-of-expense-by-tos-in-2013" class="anchor"></a>Estimate distribution of expense by TOS in 2013</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To get ambulatory (OB + OP) and home health/other expenditures, add variables to the mepsdsgn object.</span>
+mepsdsgn &lt;-<span class="st"> </span><span class="kw">update</span>(mepsdsgn,
+                   <span class="dt">ambexp13 =</span> obvexp13 +<span class="st"> </span>optexp13 +<span class="st"> </span>ertexp13,
+                   <span class="dt">hhexp13  =</span> hhaexp13 +<span class="st"> </span>hhnexp13 +<span class="st"> </span>visexp13 +<span class="st"> </span>othexp13)
+
+<span class="co"># Use svyratio to calculate percentage distribution of spending by type of service:</span>
+pct_tos =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svyratio">svyratio</a></span>(
+    ~iptexp13 +<span class="st"> </span>ambexp13 +<span class="st"> </span>rxexp13 +<span class="st"> </span>dvtexp13 +<span class="st"> </span>hhexp13,
+    <span class="dt">denominator =</span> ~totexp13,
+    <span class="dt">design =</span> mepsdsgn
+)
+
+<span class="co"># Now do the same thing by age group (&lt;65, 65+), using the `subset` function.</span>
+pct_tos_lt65 =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svyratio">svyratio</a></span>(
+    ~iptexp13 +<span class="st"> </span>ambexp13 +<span class="st"> </span>rxexp13 +<span class="st"> </span>dvtexp13 +<span class="st"> </span>hhexp13,
+    <span class="dt">denominator =</span> ~totexp13,
+    <span class="dt">design =</span> <span class="kw">subset</span>(mepsdsgn, agelast &lt;<span class="st"> </span><span class="dv">65</span>)
+)
+
+pct_tos_ge65 =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/survey/topics/svyratio">svyratio</a></span>(
+    ~iptexp13 +<span class="st"> </span>ambexp13 +<span class="st"> </span>rxexp13 +<span class="st"> </span>dvtexp13 +<span class="st"> </span>hhexp13,
+    <span class="dt">denominator =</span> ~totexp13,
+    <span class="dt">design =</span> <span class="kw">subset</span>(mepsdsgn, agelast &gt;=<span class="st"> </span><span class="dv">65</span>)
+)
+
+<span class="co"># Combine all three tables</span>
+<span class="kw">tibble</span>(<span class="dt">tos =</span> <span class="kw">names</span>(<span class="kw">coef</span>(pct_tos)),
+       <span class="dt">pct =</span> <span class="kw">coef</span>(pct_tos) *<span class="st"> </span><span class="dv">100</span>,
+       <span class="dt">age =</span> <span class="st">"Total"</span>) -&gt;<span class="st"> </span>total
+    
+<span class="kw">tibble</span>(<span class="dt">tos =</span> <span class="kw">names</span>(<span class="kw">coef</span>(pct_tos_lt65)),
+       <span class="dt">pct =</span> <span class="kw">coef</span>(pct_tos_lt65) *<span class="st"> </span><span class="dv">100</span>,
+       <span class="dt">age =</span> <span class="st">"&lt;65 Years"</span>) -&gt;<span class="st"> </span>lt65
+
+<span class="kw">tibble</span>(<span class="dt">tos =</span> <span class="kw">names</span>(<span class="kw">coef</span>(pct_tos_ge65)),
+       <span class="dt">pct =</span> <span class="kw">coef</span>(pct_tos_ge65) *<span class="st"> </span><span class="dv">100</span>,
+       <span class="dt">age =</span> <span class="st">"65+ Years"</span>) -&gt;<span class="st"> </span>ge65
+
+<span class="kw">bind_rows</span>(total, lt65, ge65) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">tos =</span> <span class="kw">case_when</span>(
+        <span class="kw">grepl</span>(<span class="st">"ipt"</span>, tos) ~<span class="st"> "1 Hospital IP"</span>,
+        <span class="kw">grepl</span>(<span class="st">"amb"</span>, tos) ~<span class="st"> "2 Ambulatory"</span>,
+        <span class="kw">grepl</span>(<span class="st">"rx"</span> , tos) ~<span class="st"> "3 Rx"</span>,
+        <span class="kw">grepl</span>(<span class="st">"dvt"</span>, tos) ~<span class="st"> "4 Dental"</span>,
+        <span class="kw">grepl</span>(<span class="st">"hh"</span> , tos) ~<span class="st"> "5 HH and other"</span>
+    )) -&gt;<span class="st"> </span>df
+
+knitr::<span class="kw">kable</span>(df)</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">tos</th>
+<th align="right">pct</th>
+<th align="left">age</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">1 Hospital IP</td>
+<td align="right">27.911022</td>
+<td align="left">Total</td>
+</tr>
+<tr class="even">
+<td align="left">2 Ambulatory</td>
+<td align="right">37.882294</td>
+<td align="left">Total</td>
+</tr>
+<tr class="odd">
+<td align="left">3 Rx</td>
+<td align="right">21.977145</td>
+<td align="left">Total</td>
+</tr>
+<tr class="even">
+<td align="left">4 Dental</td>
+<td align="right">6.556864</td>
+<td align="left">Total</td>
+</tr>
+<tr class="odd">
+<td align="left">5 HH and other</td>
+<td align="right">5.672677</td>
+<td align="left">Total</td>
+</tr>
+<tr class="even">
+<td align="left">1 Hospital IP</td>
+<td align="right">25.795551</td>
+<td align="left">&lt;65 Years</td>
+</tr>
+<tr class="odd">
+<td align="left">2 Ambulatory</td>
+<td align="right">40.464733</td>
+<td align="left">&lt;65 Years</td>
+</tr>
+<tr class="even">
+<td align="left">3 Rx</td>
+<td align="right">21.540182</td>
+<td align="left">&lt;65 Years</td>
+</tr>
+<tr class="odd">
+<td align="left">4 Dental</td>
+<td align="right">7.848380</td>
+<td align="left">&lt;65 Years</td>
+</tr>
+<tr class="even">
+<td align="left">5 HH and other</td>
+<td align="right">4.351155</td>
+<td align="left">&lt;65 Years</td>
+</tr>
+<tr class="odd">
+<td align="left">1 Hospital IP</td>
+<td align="right">32.383667</td>
+<td align="left">65+ Years</td>
+</tr>
+<tr class="even">
+<td align="left">2 Ambulatory</td>
+<td align="right">32.422359</td>
+<td align="left">65+ Years</td>
+</tr>
+<tr class="odd">
+<td align="left">3 Rx</td>
+<td align="right">22.900994</td>
+<td align="left">65+ Years</td>
+</tr>
+<tr class="even">
+<td align="left">4 Dental</td>
+<td align="right">3.826268</td>
+<td align="left">65+ Years</td>
+</tr>
+<tr class="odd">
+<td align="left">5 HH and other</td>
+<td align="right">8.466711</td>
+<td align="left">65+ Years</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="create-the-plot" class="section level3">
+<h3 class="hasAnchor">
+<a href="#create-the-plot" class="anchor"></a>Create the plot</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">caption =<span class="st"> "Note: Esimates are for the U.S. civilian</span>
+<span class="st">non-institutionalized population. Percentages may not add to exactly</span>
+<span class="st">100.0 due to rounding. Source: Center for Financing, Access, and Cost</span>
+<span class="st">Trends, AHRQ, Household Component of the Medical Expenditure Panel</span>
+<span class="st">Survey, 2013."</span> %&gt;%<span class="st"> </span>
+<span class="st">    </span>{<span class="kw">paste0</span>(<span class="kw">strwrap</span>(., <span class="dv">130</span>), <span class="dt">sep=</span><span class="st">""</span>, <span class="dt">collapse=</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)}
+
+df %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> tos, <span class="dt">y =</span> pct, <span class="dt">fill =</span> age)) +
+<span class="st">    </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">"dodge"</span>) +
+<span class="st">    </span><span class="kw">scale_fill_brewer</span>() +
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">"Percentage"</span>, <span class="dt">x =</span> <span class="st">""</span>,
+         <span class="dt">title =</span> <span class="st">"Percentage Distribution of Health Care Spending, by Type of Service, 2013"</span>,
+         <span class="dt">caption =</span> caption) +
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(pct)),
+              <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> <span class="fl">0.9</span>),
+              <span class="dt">vjust =</span> -<span class="fl">0.25</span>) +
+<span class="st">    </span><span class="kw">theme_classic</span>() +
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">"top"</span>,
+          <span class="dt">legend.title =</span> <span class="kw">element_blank</span>(),
+          <span class="dt">axis.line.x =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">"black"</span>),
+          <span class="dt">axis.line.y =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">"black"</span>),
+          <span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)) +
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),
+                       <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">max</span>(df$pct) +<span class="st"> </span><span class="dv">2</span>))</code></pre></div>
+<p><img src="README-figure/unnamed-chunk-11-1.png" width="672"></p>
+</div>
+</div>
 </div>
 </div>
   </div>

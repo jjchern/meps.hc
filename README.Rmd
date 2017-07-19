@@ -1,5 +1,7 @@
 ---
-output: github_document
+output: 
+  github_document:
+    toc: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -8,9 +10,10 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-",
+  fig.path = "README-figure/",
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  cache = TRUE
 )
 ```
 
@@ -22,7 +25,10 @@ knitr::opts_chunk$set(
 
 The goal of `meps.hc` is to wrap the Annual Consolidated Data Files from the 
 Medical Expenditure Panel Survey (`meps`) Household Component (`hc`) in an R 
-data package. All variable labels and value labels are included.
+data package. 
+
+All variable labels and value labels are included. 
+Variable names are in lowercase.
 
 For more information about the consolidated MEPS-HC files, see [the AHRQ webpages](https://meps.ahrq.gov/mepsweb/data_stats/download_data_files_results.jsp?cboDataYear=All&cboDataTypeY=1%2CHousehold+Full+Year+File&buttonYearandDataType=Search&cboPufNumber=All&SearchTitle=Consolidated+Data), or the example code from the [`HHS-AHRQ/MEPS` repo](https://github.com/HHS-AHRQ/MEPS) by [`@e-mitchell`](https://github.com/e-mitchell).
 
@@ -48,10 +54,232 @@ devtools::install_github("jjchern/meps.hc")
 
 # Usage
 
+## Load the datasets
+
 ```{r}
-# Load tibble for better printout
-library(tibble)
+# Load tibble via tidyverse for better printout
+library(tidyverse)
 
 meps.hc::f2014
 ```
 
+## Replicate Estimates from the MEPS Summary Table
+
+This section replicates the first row of [MEPS summary table for 2013 data](https://meps.ahrq.gov/mepsweb/data_stats/tables_compendia_hh_interactive.jsp?_SERVICE=MEPSSocket0&_PROGRAM=MEPSPGM.TC.SAS&File=HCFY2013&Table=HCFY2013_PLEXP_%40&VAR1=AGE&VAR2=SEX&VAR3=RACETH5C&VAR4=INSURCOV&VAR5=POVCAT13&VAR6=REGION&VAR7=HEALTH&VARO1=4+17+44+64&VARO2=1&VARO3=1&VARO4=1&VARO5=1&VARO6=1&VARO7=1&_Debug=).
+
+The code are modified from 
+
+- [`HHS-AHRQ/MEPS/R:` Analyzing MEPS data using R](https://github.com/HHS-AHRQ/MEPS/tree/master/R), and
+- [`HHS-AHRQ/MEPS/R/example_1.R`](https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_1.R)
+
+### Show variable labels for selected variables
+
+```{r}
+meps.hc::f2013 %>% 
+    select(varpsu, varstr, perwt13f, totexp13,
+           totslf13, totptr13, totmcr13, totmcd13,
+           totva13, totwcp13, tototh13) %>% 
+    labelled::var_label() %>% 
+    enframe() %>% 
+    unnest() %>% 
+    knitr::kable()
+```
+
+### Estimate total healthcare expenditures in 2013
+
+```{r}
+library(survey)
+
+# 'adjust': center the stratum at the population mean 
+# rather than the stratum mean
+options(survey.lonely.psu = 'adjust')
+
+mepsdsgn = svydesign(id = ~varpsu, # cluster ids
+                     strata = ~varstr, 
+                     weights = ~perwt13f, # sampling weights
+                     data = meps.hc::f2013,
+                     nest = TRUE) # enforce nesting within strata
+
+# Replicate estimates reported in 
+svytotal(~totexp13, design = mepsdsgn) %>% 
+    as_tibble() %>% 
+    transmute(`2013 US Tot. Exp. (in millions)` = total / 1000000,
+              `Std. Err. (in millions)` = totexp13 / 1000000) %>% 
+    knitr::kable()
+```
+
+### Total US population in 2013
+
+```{r}
+# Standard errors are not applicable to population control totals, so we don't need to use a survey function here.
+# The total population is equal to the sum of survey weights (PERWT13F).
+sum(meps.hc::f2013$perwt13f) %>% 
+    as_tibble() %>% 
+    transmute(`Population (in thousands)` = value / 1000,
+              `Std. Err.` = "NA") %>% 
+    knitr::kable(digits = 0)
+```
+
+### Percent of people with any expense in 2013
+
+```{r}
+# To calculate the percent of people with any expense, first update mepsdsgn with a new indicator variable for persons with an expense:
+update(mepsdsgn, any_expense = (totexp13 > 0) * 1) -> mepsdsgn
+
+# Then run the 'svymean' function
+svymean(~any_expense, design = mepsdsgn) %>% 
+    as_tibble() %>% 
+    transmute(`Percent with expense` = mean * 100,
+              `Std. Err.` = any_expense * 100) %>% 
+    knitr::kable(digits = 1)
+```
+
+### Mean and median expense per person in 2013
+
+```{r}
+# To get expenses per person with an expense, use the 'subset' function to limit the dataset to persons that have an expense (i.e. any_expense == 1).
+
+svymean(~totexp13, design = subset(mepsdsgn, any_expense == 1)) %>% 
+    as_tibble() %>% 
+    transmute(`Mean (per person with an expense)` = mean,
+              `Std. Err.` = totexp13) %>% 
+    knitr::kable(digits = 0)
+
+svyquantile(~totexp13, 
+            design = subset(mepsdsgn, any_expense==1),
+            quantiles = 0.5) %>%
+    as_tibble() %>% 
+    transmute(`Median (per person with an expense)` = `0.5`,
+              `Std. Err.` = "NA") %>% 
+    knitr::kable()
+```
+
+### Distribution by source of payment in 2013
+
+```{r}
+
+# Before estimating percentages for 'Other' insurance, we need to adjust this variable to match the online table:
+# Other = VA + worker's comp + other sources.
+update(mepsdsgn, tototh13 = totva13 + totwcp13 + tototh13) -> mepsdsgn
+
+# For percent of total, use the `svyratio` function, and specify the numerator and denominator.
+# Use a '+' sign to calculate estimates for multiple variables.
+svyratio(~totslf13 + totptr13 + totmcr13 + totmcd13 + tototh13,
+         denominator = ~totexp13,
+         design = mepsdsgn) %>% 
+         {tibble(
+             `Percent of total expenses by source of payment` = 
+                         coef(.) %>% names(),
+             `Estimates` = coef(.) * 100, 
+             `Std. Err.` = SE(.) * 100
+         )} %>% 
+    knitr::kable(digits = 1)
+```
+
+## Replicate Figure 1 in MEPS Statistical Brief #491
+
+This section replicates Figure 1 in [MEPS Statistical Brief #491](https://meps.ahrq.gov/data_files/publications/st491/stat491.shtml)
+
+The code are modified from 
+
+- [`HHS-AHRQ/MEPS/R:` Analyzing MEPS data using R](https://github.com/HHS-AHRQ/MEPS/tree/master/R), and
+- [`HHS-AHRQ/MEPS/R/example_1.R`](https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_1.R)
+- [`HHS-AHRQ/MEPS/R/example_2.R`](https://github.com/HHS-AHRQ/MEPS/blob/master/R/example_2.R)
+
+### Show variable labels for selected variables
+
+```{r}
+meps.hc::f2013 %>% 
+    select(varpsu, varstr, perwt13f, totexp13,
+           obvexp13, optexp13, ertexp13,
+           hhaexp13, hhnexp13, visexp13, othexp13,
+           iptexp13, rxexp13, dvtexp13,
+           agelast) %>% 
+    labelled::var_label() %>% 
+    enframe() %>% 
+    unnest() %>% 
+    knitr::kable()
+```
+
+### Estimate distribution of expense by TOS in 2013
+
+```{r}
+# To get ambulatory (OB + OP) and home health/other expenditures, add variables to the mepsdsgn object.
+mepsdsgn <- update(mepsdsgn,
+                   ambexp13 = obvexp13 + optexp13 + ertexp13,
+                   hhexp13  = hhaexp13 + hhnexp13 + visexp13 + othexp13)
+
+# Use svyratio to calculate percentage distribution of spending by type of service:
+pct_tos = svyratio(
+    ~iptexp13 + ambexp13 + rxexp13 + dvtexp13 + hhexp13,
+    denominator = ~totexp13,
+    design = mepsdsgn
+)
+
+# Now do the same thing by age group (<65, 65+), using the `subset` function.
+pct_tos_lt65 = svyratio(
+    ~iptexp13 + ambexp13 + rxexp13 + dvtexp13 + hhexp13,
+    denominator = ~totexp13,
+    design = subset(mepsdsgn, agelast < 65)
+)
+
+pct_tos_ge65 = svyratio(
+    ~iptexp13 + ambexp13 + rxexp13 + dvtexp13 + hhexp13,
+    denominator = ~totexp13,
+    design = subset(mepsdsgn, agelast >= 65)
+)
+
+# Combine all three tables
+tibble(tos = names(coef(pct_tos)),
+       pct = coef(pct_tos) * 100,
+       age = "Total") -> total
+    
+tibble(tos = names(coef(pct_tos_lt65)),
+       pct = coef(pct_tos_lt65) * 100,
+       age = "<65 Years") -> lt65
+
+tibble(tos = names(coef(pct_tos_ge65)),
+       pct = coef(pct_tos_ge65) * 100,
+       age = "65+ Years") -> ge65
+
+bind_rows(total, lt65, ge65) %>% 
+    mutate(tos = case_when(
+        grepl("ipt", tos) ~ "1 Hospital IP",
+        grepl("amb", tos) ~ "2 Ambulatory",
+        grepl("rx" , tos) ~ "3 Rx",
+        grepl("dvt", tos) ~ "4 Dental",
+        grepl("hh" , tos) ~ "5 HH and other"
+    )) -> df
+
+knitr::kable(df)
+```
+
+### Create the plot
+
+```{r}
+caption = "Note: Esimates are for the U.S. civilian
+non-institutionalized population. Percentages may not add to exactly
+100.0 due to rounding. Source: Center for Financing, Access, and Cost
+Trends, AHRQ, Household Component of the Medical Expenditure Panel
+Survey, 2013." %>% 
+    {paste0(strwrap(., 130), sep="", collapse="\n")}
+
+df %>% 
+    ggplot(aes(x = tos, y = pct, fill = age)) +
+    geom_col(position = "dodge") +
+    scale_fill_brewer() +
+    labs(y = "Percentage", x = "",
+         title = "Percentage Distribution of Health Care Spending, by Type of Service, 2013",
+         caption = caption) +
+    geom_text(aes(label = round(pct)),
+              position = position_dodge(width = 0.9),
+              vjust = -0.25) +
+    theme_classic() +
+    theme(legend.position="top",
+          legend.title = element_blank(),
+          axis.line.x = element_line(colour = "black"),
+          axis.line.y = element_line(colour = "black"),
+          plot.caption = element_text(size = 8, hjust = 0)) +
+    scale_y_continuous(expand = c(0,0),
+                       limits = c(0, max(df$pct) + 2))
+```
