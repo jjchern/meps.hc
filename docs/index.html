@@ -107,50 +107,56 @@ devtools::<span class="kw">install_github</span>(<span class="st">"jjchern/meps.
 <span class="kw">library</span>(tidyverse)
 
 meps.hc::f2014
-<span class="co">#&gt; # A tibble: 34,875 x 1,838</span>
-<span class="co">#&gt;     duid   pid dupersid       panel famid31 famid42 famid53 famid14</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;chr&gt;      &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;</span>
-<span class="co">#&gt;  1 40001   101 40001101 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  2 40001   102 40001102 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  3 40001   103 40001103 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  4 40001   104 40001104 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  5 40002   101 40002101 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  6 40004   101 40004101 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  7 40004   102 40004102 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  8 40004   103 40004103 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt;  9 40004   104 40004104 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt; 10 40004   105 40004105 18 panel 18       A       A       A       A</span>
-<span class="co">#&gt; # ... with 34,865 more rows, and 1830 more variables: famidyr &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   cpsfamid &lt;fctr&gt;, fcsz1231 &lt;dbl&gt;, fcrp1231 &lt;fctr&gt;, ruletr31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   ruletr42 &lt;fctr&gt;, ruletr53 &lt;fctr&gt;, ruletr14 &lt;fctr&gt;, rusize31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   rusize42 &lt;fctr&gt;, rusize53 &lt;fctr&gt;, rusize14 &lt;fctr&gt;, ruclas31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   ruclas42 &lt;fctr&gt;, ruclas53 &lt;fctr&gt;, ruclas14 &lt;fctr&gt;, famsze31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   famsze42 &lt;fctr&gt;, famsze53 &lt;fctr&gt;, famsze14 &lt;dbl&gt;, fmrs1231 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   fams1231 &lt;dbl&gt;, famszeyr &lt;dbl&gt;, famrfpyr &lt;fctr&gt;, region31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   region42 &lt;fctr&gt;, region53 &lt;fctr&gt;, region14 &lt;fctr&gt;, refprs31 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   refprs42 &lt;dbl&gt;, refprs53 &lt;dbl&gt;, refprs14 &lt;dbl&gt;, resp31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   resp42 &lt;fctr&gt;, resp53 &lt;fctr&gt;, resp14 &lt;fctr&gt;, proxy31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   proxy42 &lt;fctr&gt;, proxy53 &lt;fctr&gt;, proxy14 &lt;fctr&gt;, intvlang &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   begrfm31 &lt;fctr&gt;, begrfy31 &lt;fctr&gt;, endrfm31 &lt;fctr&gt;, endrfy31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   begrfm42 &lt;fctr&gt;, begrfy42 &lt;fctr&gt;, endrfm42 &lt;fctr&gt;, endrfy42 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   begrfm53 &lt;fctr&gt;, begrfy53 &lt;fctr&gt;, endrfm53 &lt;fctr&gt;, endrfy53 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   endrfm14 &lt;fctr&gt;, endrfy14 &lt;fctr&gt;, keyness &lt;fctr&gt;, inscop31 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   inscop42 &lt;fctr&gt;, inscop53 &lt;fctr&gt;, inscop14 &lt;fctr&gt;, insc1231 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   inscope &lt;fctr&gt;, elgrnd31 &lt;fctr&gt;, elgrnd42 &lt;fctr&gt;, elgrnd53 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   elgrnd14 &lt;fctr&gt;, pstats31 &lt;fctr&gt;, pstats42 &lt;fctr&gt;, pstats53 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   rurslt31 &lt;fctr&gt;, rurslt42 &lt;fctr&gt;, rurslt53 &lt;fctr&gt;, age31x &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   age42x &lt;dbl&gt;, age53x &lt;dbl&gt;, age14x &lt;dbl&gt;, agelast &lt;dbl&gt;, dobmm &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   dobyy &lt;fctr&gt;, sex &lt;fctr&gt;, racev1x &lt;fctr&gt;, racev2x &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   raceax &lt;fctr&gt;, racebx &lt;fctr&gt;, racewx &lt;fctr&gt;, racethx &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   hispanx &lt;fctr&gt;, hispncat &lt;fctr&gt;, marry31x &lt;fctr&gt;, marry42x &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   marry53x &lt;fctr&gt;, marry14x &lt;fctr&gt;, spouid31 &lt;fctr&gt;, spouid42 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   spouid53 &lt;fctr&gt;, spouid14 &lt;fctr&gt;, spouin31 &lt;fctr&gt;, spouin42 &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   spouin53 &lt;fctr&gt;, spouin14 &lt;fctr&gt;, ...</span></code></pre></div>
+<span class="co"># A tibble: 34,875 x 1,838</span>
+    duid   pid dupersid       panel famid31 famid42 famid53 famid14
+   &lt;dbl&gt;<span class="st"> </span><span class="er">&lt;</span>dbl&gt;<span class="st">    </span><span class="er">&lt;</span>chr&gt;<span class="st">      </span><span class="er">&lt;</span>fctr&gt;<span class="st">  </span><span class="er">&lt;</span>fctr&gt;<span class="st">  </span><span class="er">&lt;</span>fctr&gt;<span class="st">  </span><span class="er">&lt;</span>fctr&gt;<span class="st">  </span><span class="er">&lt;</span>fctr&gt;
+<span class="st"> </span><span class="dv">1</span> <span class="dv">40001</span>   <span class="dv">101</span> <span class="dv">40001101</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">2</span> <span class="dv">40001</span>   <span class="dv">102</span> <span class="dv">40001102</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">3</span> <span class="dv">40001</span>   <span class="dv">103</span> <span class="dv">40001103</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">4</span> <span class="dv">40001</span>   <span class="dv">104</span> <span class="dv">40001104</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">5</span> <span class="dv">40002</span>   <span class="dv">101</span> <span class="dv">40002101</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">6</span> <span class="dv">40004</span>   <span class="dv">101</span> <span class="dv">40004101</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">7</span> <span class="dv">40004</span>   <span class="dv">102</span> <span class="dv">40004102</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">8</span> <span class="dv">40004</span>   <span class="dv">103</span> <span class="dv">40004103</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+ <span class="dv">9</span> <span class="dv">40004</span>   <span class="dv">104</span> <span class="dv">40004104</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+<span class="dv">10</span> <span class="dv">40004</span>   <span class="dv">105</span> <span class="dv">40004105</span> <span class="dv">18</span> panel <span class="dv">18</span>       A       A       A       A
+<span class="co"># ... with 34,865 more rows, and 1830 more variables: famidyr &lt;fctr&gt;,</span>
+<span class="co">#   cpsfamid &lt;fctr&gt;, fcsz1231 &lt;dbl&gt;, fcrp1231 &lt;fctr&gt;, ruletr31 &lt;fctr&gt;,</span>
+<span class="co">#   ruletr42 &lt;fctr&gt;, ruletr53 &lt;fctr&gt;, ruletr14 &lt;fctr&gt;, rusize31 &lt;fctr&gt;,</span>
+<span class="co">#   rusize42 &lt;fctr&gt;, rusize53 &lt;fctr&gt;, rusize14 &lt;fctr&gt;, ruclas31 &lt;fctr&gt;,</span>
+<span class="co">#   ruclas42 &lt;fctr&gt;, ruclas53 &lt;fctr&gt;, ruclas14 &lt;fctr&gt;, famsze31 &lt;fctr&gt;,</span>
+<span class="co">#   famsze42 &lt;fctr&gt;, famsze53 &lt;fctr&gt;, famsze14 &lt;dbl&gt;, fmrs1231 &lt;fctr&gt;,</span>
+<span class="co">#   fams1231 &lt;dbl&gt;, famszeyr &lt;dbl&gt;, famrfpyr &lt;fctr&gt;, region31 &lt;fctr&gt;,</span>
+<span class="co">#   region42 &lt;fctr&gt;, region53 &lt;fctr&gt;, region14 &lt;fctr&gt;, refprs31 &lt;dbl&gt;,</span>
+<span class="co">#   refprs42 &lt;dbl&gt;, refprs53 &lt;dbl&gt;, refprs14 &lt;dbl&gt;, resp31 &lt;fctr&gt;,</span>
+<span class="co">#   resp42 &lt;fctr&gt;, resp53 &lt;fctr&gt;, resp14 &lt;fctr&gt;, proxy31 &lt;fctr&gt;,</span>
+<span class="co">#   proxy42 &lt;fctr&gt;, proxy53 &lt;fctr&gt;, proxy14 &lt;fctr&gt;, intvlang &lt;fctr&gt;,</span>
+<span class="co">#   begrfm31 &lt;fctr&gt;, begrfy31 &lt;fctr&gt;, endrfm31 &lt;fctr&gt;, endrfy31 &lt;fctr&gt;,</span>
+<span class="co">#   begrfm42 &lt;fctr&gt;, begrfy42 &lt;fctr&gt;, endrfm42 &lt;fctr&gt;, endrfy42 &lt;fctr&gt;,</span>
+<span class="co">#   begrfm53 &lt;fctr&gt;, begrfy53 &lt;fctr&gt;, endrfm53 &lt;fctr&gt;, endrfy53 &lt;fctr&gt;,</span>
+<span class="co">#   endrfm14 &lt;fctr&gt;, endrfy14 &lt;fctr&gt;, keyness &lt;fctr&gt;, inscop31 &lt;fctr&gt;,</span>
+<span class="co">#   inscop42 &lt;fctr&gt;, inscop53 &lt;fctr&gt;, inscop14 &lt;fctr&gt;, insc1231 &lt;fctr&gt;,</span>
+<span class="co">#   inscope &lt;fctr&gt;, elgrnd31 &lt;fctr&gt;, elgrnd42 &lt;fctr&gt;, elgrnd53 &lt;fctr&gt;,</span>
+<span class="co">#   elgrnd14 &lt;fctr&gt;, pstats31 &lt;fctr&gt;, pstats42 &lt;fctr&gt;, pstats53 &lt;fctr&gt;,</span>
+<span class="co">#   rurslt31 &lt;fctr&gt;, rurslt42 &lt;fctr&gt;, rurslt53 &lt;fctr&gt;, age31x &lt;dbl&gt;,</span>
+<span class="co">#   age42x &lt;dbl&gt;, age53x &lt;dbl&gt;, age14x &lt;dbl&gt;, agelast &lt;dbl&gt;, dobmm &lt;fctr&gt;,</span>
+<span class="co">#   dobyy &lt;fctr&gt;, sex &lt;fctr&gt;, racev1x &lt;fctr&gt;, racev2x &lt;fctr&gt;,</span>
+<span class="co">#   raceax &lt;fctr&gt;, racebx &lt;fctr&gt;, racewx &lt;fctr&gt;, racethx &lt;fctr&gt;,</span>
+<span class="co">#   hispanx &lt;fctr&gt;, hispncat &lt;fctr&gt;, marry31x &lt;fctr&gt;, marry42x &lt;fctr&gt;,</span>
+<span class="co">#   marry53x &lt;fctr&gt;, marry14x &lt;fctr&gt;, spouid31 &lt;fctr&gt;, spouid42 &lt;fctr&gt;,</span>
+<span class="co">#   spouid53 &lt;fctr&gt;, spouid14 &lt;fctr&gt;, spouin31 &lt;fctr&gt;, spouin42 &lt;fctr&gt;,</span>
+<span class="co">#   spouin53 &lt;fctr&gt;, spouin14 &lt;fctr&gt;, ...</span></code></pre></div>
 </div>
 <div id="replicate-estimates-from-the-meps-summary-table" class="section level2">
 <h2 class="hasAnchor">
 <a href="#replicate-estimates-from-the-meps-summary-table" class="anchor"></a>Replicate Estimates from the MEPS Summary Table</h2>
-<p>This section replicates the first row of <a href="https://meps.ahrq.gov/mepsweb/data_stats/tables_compendia_hh_interactive.jsp?_SERVICE=MEPSSocket0&amp;_PROGRAM=MEPSPGM.TC.SAS&amp;File=HCFY2013&amp;Table=HCFY2013_PLEXP_%40&amp;VAR1=AGE&amp;VAR2=SEX&amp;VAR3=RACETH5C&amp;VAR4=INSURCOV&amp;VAR5=POVCAT13&amp;VAR6=REGION&amp;VAR7=HEALTH&amp;VARO1=4+17+44+64&amp;VARO2=1&amp;VARO3=1&amp;VARO4=1&amp;VARO5=1&amp;VARO6=1&amp;VARO7=1&amp;_Debug=">MEPS summary table for 2013 data</a>.</p>
+<p>This section replicates the first row of <a href="https://meps.ahrq.gov/mepsweb/data_stats/tables_compendia_hh_interactive.jsp?_SERVICE=MEPSSocket0&amp;_PROGRAM=MEPSPGM.TC.SAS&amp;File=HCFY2013&amp;Table=HCFY2013_PLEXP_%40&amp;VAR1=AGE&amp;VAR2=SEX&amp;VAR3=RACETH5C&amp;VAR4=INSURCOV&amp;VAR5=POVCAT13&amp;VAR6=REGION&amp;VAR7=HEALTH&amp;VARO1=4+17+44+64&amp;VARO2=1&amp;VARO3=1&amp;VARO4=1&amp;VARO5=1&amp;VARO6=1&amp;VARO7=1&amp;_Debug=">MEPS summary table for 2013 data</a>:</p>
+<div class="figure">
+<img src="./README-files/estimates.png" alt="Estimates"><p class="caption">Estimates</p>
+</div>
+<div class="figure">
+<img src="./README-files/standard_errors.png" alt="Standard Errors"><p class="caption">Standard Errors</p>
+</div>
 <p>The code are modified from</p>
 <ul>
 <li>
@@ -649,8 +655,1722 @@ df %&gt;%<span class="st"> </span>
           <span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)) +
 <span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),
                        <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">max</span>(df$pct) +<span class="st"> </span><span class="dv">2</span>))</code></pre></div>
-<p><img src="README-figure/unnamed-chunk-11-1.png" width="672"></p>
+<p><img src="README-files/unnamed-chunk-11-1.png" width="672"></p>
 </div>
+</div>
+<div id="analyze-meps-data-using-stata" class="section level2">
+<h2 class="hasAnchor">
+<a href="#analyze-meps-data-using-stata" class="anchor"></a>Analyze MEPS data using Stata</h2>
+<p>This section shows Stata code and outputs for analyzing MEPS data. The code are modified from <a href="https://github.com/HHS-AHRQ/MEPS/tree/master/Stata/exercise_8"><code>HHS-AHQR/MEPS/Stata/exercise_8/</code></a>.</p>
+<div id="show-variable-labels-for-selected-variables-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#show-variable-labels-for-selected-variables-2" class="anchor"></a>Show variable labels for selected variables</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meps.hc::f2014 %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(totexp14, ipdexp14, ipfexp14, obvexp14, 
+           rxexp14, opdexp14, opfexp14, dvtexp14, 
+           erdexp14, erfexp14, hhaexp14, hhnexp14, 
+           othexp14, visexp14, age14x, age42x, 
+           age31x, varstr, varpsu, perwt14f,
+           dupersid, duid, cpsfamid, famwt14c, 
+           totslf14, ttlp14x, inscov14, povcat14,
+           racethx) %&gt;%<span class="st"> </span>
+<span class="st">    </span>labelled::<span class="kw">var_label</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">enframe</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">unnest</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span>knitr::<span class="kw">kable</span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="left">value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">totexp14</td>
+<td align="left">total health care exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">ipdexp14</td>
+<td align="left">totl hosp staz dr exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">ipfexp14</td>
+<td align="left">tot hosp ip facility exp-inc 0 nites 14</td>
+</tr>
+<tr class="even">
+<td align="left">obvexp14</td>
+<td align="left">total office-based exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">rxexp14</td>
+<td align="left">total rx-exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">opdexp14</td>
+<td align="left">total outpatient provider exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">opfexp14</td>
+<td align="left">total outpatient facility exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">dvtexp14</td>
+<td align="left">total dental care exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">erdexp14</td>
+<td align="left">total emergency room dr exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">erfexp14</td>
+<td align="left">total er facility exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">hhaexp14</td>
+<td align="left">total home health agency exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">hhnexp14</td>
+<td align="left">total home health non-agncy exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">othexp14</td>
+<td align="left">tot other equip/sply (excl diab) exp 14</td>
+</tr>
+<tr class="even">
+<td align="left">visexp14</td>
+<td align="left">total glasses/contact lens exp 14</td>
+</tr>
+<tr class="odd">
+<td align="left">age14x</td>
+<td align="left">age as of 12/31/14 (edited/imputed)</td>
+</tr>
+<tr class="even">
+<td align="left">age42x</td>
+<td align="left">age - r4/2 (edited/imputed)</td>
+</tr>
+<tr class="odd">
+<td align="left">age31x</td>
+<td align="left">age - r3/1 (edited/imputed)</td>
+</tr>
+<tr class="even">
+<td align="left">varstr</td>
+<td align="left">variance estimation stratum - 2014</td>
+</tr>
+<tr class="odd">
+<td align="left">varpsu</td>
+<td align="left">variance estimation psu - 2014 .</td>
+</tr>
+<tr class="even">
+<td align="left">perwt14f</td>
+<td align="left">final person weight, 2014</td>
+</tr>
+<tr class="odd">
+<td align="left">dupersid</td>
+<td align="left">person id (duid + pid)</td>
+</tr>
+<tr class="even">
+<td align="left">duid</td>
+<td align="left">dwelling unit id</td>
+</tr>
+<tr class="odd">
+<td align="left">cpsfamid</td>
+<td align="left">cpsfamid</td>
+</tr>
+<tr class="even">
+<td align="left">famwt14c</td>
+<td align="left">pov adj family wgt-cps fam on 12/31/14</td>
+</tr>
+<tr class="odd">
+<td align="left">totslf14</td>
+<td align="left">total amt paid by self/family 14</td>
+</tr>
+<tr class="even">
+<td align="left">ttlp14x</td>
+<td align="left">person s total income</td>
+</tr>
+<tr class="odd">
+<td align="left">inscov14</td>
+<td align="left">health insurance coverage indicator 14</td>
+</tr>
+<tr class="even">
+<td align="left">povcat14</td>
+<td align="left">family inc as % of poverty line - catego</td>
+</tr>
+<tr class="odd">
+<td align="left">racethx</td>
+<td align="left">race/ethnicity (edited/imputed)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="save-r-rda-file-as-stata-dta-file" class="section level3">
+<h3 class="hasAnchor">
+<a href="#save-r-rda-file-as-stata-dta-file" class="anchor"></a>Save R <code>rda</code> file as Stata <code>dta</code> file</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">haven::<span class="kw">write_dta</span>(meps.hc::f2014, <span class="st">"README-files/meps_hc_2014.dta"</span>)
+haven::<span class="kw">write_dta</span>(meps.hc::f2013, <span class="st">"README-files/meps_hc_2013.dta"</span>)</code></pre></div>
+</div>
+<div id="estimate-the-total-healthcare-expenditures-in-2014" class="section level3">
+<h3 class="hasAnchor">
+<a href="#estimate-the-total-healthcare-expenditures-in-2014" class="anchor"></a>Estimate the total healthcare expenditures in 2014</h3>
+<pre><code>
+. set more off
+
+. loc vars dupersid perwt14f varpsu varstr totexp14
+
+. u `vars' using "README-files/meps_hc_2014.dta", clear
+
+. svyset varpsu [pweight = perwt14f], str(varstr)
+
+      pweight: perwt14f
+          VCE: linearized
+  Single unit: missing
+     Strata 1: varstr
+         SU 1: varpsu
+        FPC 1: &lt;zero&gt;
+
+. svy: total totexp14
+(running total on estimation sample)
+
+Survey: Total estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Design df       =          201
+
+--------------------------------------------------------------
+             |             Linearized
+             |      Total   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+    totexp14 |   1.50e+12   4.98e+10      1.40e+12    1.60e+12
+--------------------------------------------------------------</code></pre>
+</div>
+<div id="estimate-national-expenses-by-type-of-service-in-2014" class="section level3">
+<h3 class="hasAnchor">
+<a href="#estimate-national-expenses-by-type-of-service-in-2014" class="anchor"></a>Estimate national expenses by type of service in 2014</h3>
+<pre><code>
+. set more off
+
+. loc vars totexp14 ipdexp14 ipfexp14 obvexp14 rxexp14 opdexp14 opfexp14 dvtexp
+&gt; 14 erdexp14 erfexp14 hhaexp14 hhnexp14 othexp14 visexp14 age14x age42x age31x
+&gt;  varstr varpsu perwt14f 
+
+. u `vars' using "README-files/meps_hc_2014.dta", clear
+
+. 
+. * define expenditure variables by type of service
+. gen total                = totexp14
+
+. gen hospital_inpatient   = ipdexp14 + ipfexp14
+
+. gen ambulatory           = obvexp14 + opdexp14 + opfexp14 + erdexp14 + erfexp
+&gt; 14
+
+. gen prescribed_medicines = rxexp14
+
+. gen dental               = dvtexp14
+
+. gen home_health_other    = hhaexp14 + hhnexp14 + othexp14 + visexp14
+
+. gen diff                 = total-hospital_inpatient - ambulatory   - prescrib
+&gt; ed_medicines - dental - home_health_other
+
+. 
+. * create flag (1/0) variables for persons with an expense, by type of service
+. loc exp_vars total hospital_inpatient ambulatory prescribed_medicines dental 
+&gt; home_health_other
+
+. foreach var in `exp_vars' {
+  2.     gen x_`var' = (`var' &gt; 0)
+  3. }
+
+. 
+. * create a summary variable from end of year, 42, and 31 variables
+. gen age = age14x if age14x &gt;= 0
+(209 missing values generated)
+
+. replace age = age42x if age42x &gt;= 0 &amp; missing(age)
+(136 real changes made)
+
+. replace age = age31x if age31x &gt;= 0 &amp; missing(age)
+(73 real changes made)
+
+. 
+. gen agecat = 1 if age &gt;= 0 &amp; age &lt;= 64
+(4,105 missing values generated)
+
+. replace agecat = 2 if age&gt;64
+(4,105 real changes made)
+
+. 
+. * qc check on new variables --------------
+. tab1 x_total x_hospital_inpatient  x_ambulatory  x_prescribed_medicines  x_de
+&gt; ntal  x_home_health_other
+
+-&gt; tabulation of x_total  
+
+    x_total |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      7,225       20.72       20.72
+          1 |     27,650       79.28      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of x_hospital_inpatient  
+
+x_hospital_ |
+  inpatient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     32,682       93.71       93.71
+          1 |      2,193        6.29      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of x_ambulatory  
+
+x_ambulator |
+          y |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     10,531       30.20       30.20
+          1 |     24,344       69.80      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of x_prescribed_medicines  
+
+x_prescribe |
+d_medicines |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     15,948       45.73       45.73
+          1 |     18,927       54.27      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of x_dental  
+
+   x_dental |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     22,831       65.47       65.47
+          1 |     12,044       34.53      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of x_home_health_other  
+
+x_home_heal |
+   th_other |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     28,936       82.97       82.97
+          1 |      5,939       17.03      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+. sum total if total&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+       total |     27,650    4938.678    14269.34          1     491858
+
+. sum hospital_inpatient if hospital_inpatient&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+hospital_i~t |      2,193    17536.95    27716.47          3     414748
+
+. sum ambulatory if ambulatory&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+  ambulatory |     24,344    2069.085    6894.936          1     488881
+
+. sum prescribed_medicines if prescribed_medicines&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+prescribed~s |     18,927    1608.024    5659.345          1     269756
+
+. sum dental if dental&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+      dental |     12,044    654.5071    1349.928          3      38432
+
+. sum home_health_other if home_health_other&gt;0
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+home_healt~r |      5,939    1584.149    6493.048          4     172462
+
+. 
+. list age age14x age42x age31x in 1/20, table
+
+     +--------------------------------+
+     | age   age14x   age42x   age31x |
+     |--------------------------------|
+  1. |  36       36       36       35 |
+  2. |  36       36       36       36 |
+  3. |  15       15       14       14 |
+  4. |   8        8        8        7 |
+  5. |  85       85       85       85 |
+     |--------------------------------|
+  6. |  34       34       33       33 |
+  7. |  32       32       31       31 |
+  8. |  15       15       14       14 |
+  9. |  11       11       10       10 |
+ 10. |   9        9        8        8 |
+     |--------------------------------|
+ 11. |   4        4        4        3 |
+ 12. |   8        8        8        7 |
+ 13. |  20       -1       20       19 |
+ 14. |  79       79       78       78 |
+ 15. |  47       47       46       46 |
+     |--------------------------------|
+ 16. |  35       35       35       34 |
+ 17. |  36       36       36       36 |
+ 18. |  11       11       11       10 |
+ 19. |   7        7        7        7 |
+ 20. |  26       26       25       25 |
+     +--------------------------------+
+
+. 
+. tab agecat
+
+     agecat |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |     30,770       88.23       88.23
+          2 |      4,105       11.77      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+. sum age if age&gt;64
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+         age |      4,105    73.80682     6.66308         65         85
+
+. 
+. * identify the survey design characteristics
+. svyset [pweight = perwt14f], strata(varstr) psu(varpsu) vce(linearized) singl
+&gt; eunit(missing)
+
+      pweight: perwt14f
+          VCE: linearized
+  Single unit: missing
+     Strata 1: varstr
+         SU 1: varpsu
+        FPC 1: &lt;zero&gt;
+
+. 
+. // percentage distribution of expenses by type of service (stat brief #491 fi
+&gt; gure 1)
+. svy: ratio (hospital_inpatient: hospital_inpatient / total) ///
+&gt;            (ambulatory: ambulatory / total) ///
+&gt;            (prescribed_medicines: prescribed_medicines / total) ///
+&gt;            (dental: dental / total) ///
+&gt;            (home_health_other: home_health_other / total)
+(running ratio on estimation sample)
+
+Survey: Ratio estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Design df       =          201
+
+ hospital_i~t: hospital_inpatient/total
+   ambulatory: ambulatory/total
+ prescribed~s: prescribed_medicines/total
+       dental: dental/total
+ home_healt~r: home_health_other/total
+
+----------------------------------------------------------------------
+                     |             Linearized
+                     |      Ratio   Std. Err.     [95% Conf. Interval]
+---------------------+------------------------------------------------
+  hospital_inpatient |    .254729   .0117416      .2315764    .2778816
+          ambulatory |   .3850812   .0092253      .3668904    .4032719
+prescribed_medicines |   .2335445   .0095548      .2147041    .2523849
+              dental |   .0612787   .0021079      .0571223    .0654352
+   home_health_other |   .0653674   .0056807       .054166    .0765687
+----------------------------------------------------------------------
+
+.            
+. // percentage of persons with an expense, by type of service
+. svy: mean x_total x_hospital_inpatient x_ambulatory x_prescribed_medicines x_
+&gt; dental x_home_health_other
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Design df       =          201
+
+------------------------------------------------------------------------
+                       |             Linearized
+                       |       Mean   Std. Err.     [95% Conf. Interval]
+-----------------------+------------------------------------------------
+               x_total |   .8512277   .0035374      .8442524    .8582029
+  x_hospital_inpatient |   .0657779   .0021471      .0615441    .0700117
+          x_ambulatory |   .7590857   .0043806      .7504479    .7677235
+x_prescribed_medicines |   .6135182   .0049526      .6037524    .6232839
+              x_dental |   .4143585   .0059531      .4026199     .426097
+   x_home_health_other |   .2040905   .0042286      .1957524    .2124287
+------------------------------------------------------------------------
+
+.            
+. // mean expense per person with an expense, by type of service     
+. svy, subpop(x_total): mean total
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       26,665
+                                Subpop. size    =  271,065,295
+                                Design df       =          201
+
+--------------------------------------------------------------
+             |             Linearized
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+       total |   5531.379   137.9266       5259.41    5803.347
+--------------------------------------------------------------
+
+. svy, subpop(x_hospital_inpatient): mean hospital_inpatient
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =        2,081
+                                Subpop. size    = 20,946,346.5
+                                Design df       =          201
+
+--------------------------------------------------------------------
+                   |             Linearized
+                   |       Mean   Std. Err.     [95% Conf. Interval]
+-------------------+------------------------------------------------
+hospital_inpatient |   18233.81   857.9769      16542.02     19925.6
+--------------------------------------------------------------------
+
+. svy, subpop(x_ambulatory): mean ambulatory
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       23,536
+                                Subpop. size    =  241,723,564
+                                Design df       =          201
+
+--------------------------------------------------------------
+             |             Linearized
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+  ambulatory |   2388.585   62.53984      2265.266    2511.903
+--------------------------------------------------------------
+
+. svy, subpop(x_prescribed_medicines): mean prescribed_medicines
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       18,311
+                                Subpop. size    =  195,368,984
+                                Design df       =          201
+
+----------------------------------------------------------------------
+                     |             Linearized
+                     |       Mean   Std. Err.     [95% Conf. Interval]
+---------------------+------------------------------------------------
+prescribed_medicines |   1792.344   83.78614      1627.131    1957.556
+----------------------------------------------------------------------
+
+. svy, subpop(x_dental): mean dental
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       11,775
+                                Subpop. size    =  131,948,483
+                                Design df       =          201
+
+--------------------------------------------------------------
+             |             Linearized
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      dental |   696.3259    15.4452      665.8705    726.7813
+--------------------------------------------------------------
+
+. svy, subpop(x_home_health_other): mean home_health_other
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =        5,761
+                                Subpop. size    =   64,990,677
+                                Design df       =          201
+
+-------------------------------------------------------------------
+                  |             Linearized
+                  |       Mean   Std. Err.     [95% Conf. Interval]
+------------------+------------------------------------------------
+home_health_other |   1508.055   139.4998      1232.984    1783.126
+-------------------------------------------------------------------
+
+. 
+. // mean expense per person with an expense, by type of service and age catego
+&gt; ry
+. svy, subpop(x_total): mean total, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       26,665
+                                Subpop. size    =  271,065,295
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+--------------------------------------------------------------
+             |             Linearized
+        Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+total        |
+           1 |   4429.921   149.9609      4134.223     4725.62
+           2 |      10890   302.6142      10293.29     11486.7
+--------------------------------------------------------------
+
+. svy, subpop(x_hospital_inpatient): mean hospital_inpatient, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =        2,081
+                                Subpop. size    = 20,946,346.5
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+--------------------------------------------------------------------
+                   |             Linearized
+              Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------------+------------------------------------------------
+hospital_inpatient |
+                 1 |   17663.08   1263.521      15171.63    20154.54
+                 2 |   19191.14    1131.91       16959.2    21423.08
+--------------------------------------------------------------------
+
+. svy, subpop(x_ambulatory): mean ambulatory, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       23,536
+                                Subpop. size    =  241,723,564
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+--------------------------------------------------------------
+             |             Linearized
+        Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+ambulatory   |
+           1 |    2055.61   66.80712      1923.877    2187.343
+           2 |   3859.418   168.7558      3526.659    4192.177
+--------------------------------------------------------------
+
+. svy, subpop(x_prescribed_medicines): mean prescribed_medicines, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       18,311
+                                Subpop. size    =  195,368,984
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+----------------------------------------------------------------------
+                     |             Linearized
+                Over |       Mean   Std. Err.     [95% Conf. Interval]
+---------------------+------------------------------------------------
+prescribed_medicines |
+                   1 |   1560.906   106.3327      1351.236    1770.577
+                   2 |   2602.126   100.7413       2403.48    2800.771
+----------------------------------------------------------------------
+
+. svy, subpop(x_dental): mean dental, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =       11,775
+                                Subpop. size    =  131,948,483
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+--------------------------------------------------------------
+             |             Linearized
+        Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+dental       |
+           1 |     657.05   17.34416      622.8501    691.2498
+           2 |   892.5962   44.61207      804.6285    980.5639
+--------------------------------------------------------------
+
+. svy, subpop(x_home_health_other): mean home_health_other, over(agecat)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Subpop. no. obs =        5,761
+                                Subpop. size    =   64,990,677
+                                Design df       =          201
+
+            1: agecat = 1
+            2: agecat = 2
+
+-------------------------------------------------------------------
+                  |             Linearized
+             Over |       Mean   Std. Err.     [95% Conf. Interval]
+------------------+------------------------------------------------
+home_health_other |
+                1 |   1025.308    161.522      706.8131    1343.803
+                2 |   2923.966   209.7328      2510.407    3337.524
+-------------------------------------------------------------------</code></pre>
+</div>
+<div id="expenditures-and-utilization-of-antipsychotics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#expenditures-and-utilization-of-antipsychotics" class="anchor"></a><del>Expenditures and utilization of antipsychotics</del>
+</h3>
+<p>This subsection replicates figures from <a href="https://meps.ahrq.gov/data_files/publications/st275/stat275.shtml">statistical brief #275</a></p>
+</div>
+<div id="construct-family-level-estimates" class="section level3">
+<h3 class="hasAnchor">
+<a href="#construct-family-level-estimates" class="anchor"></a>Construct family-level estimates</h3>
+<blockquote>
+<p>This exercise illustrates how to construct family level variables from person level data.</p>
+</blockquote>
+<blockquote>
+<p>There are two definitions of family unit in MEPS:</p>
+</blockquote>
+<blockquote>
+<p>CPS Family: ID is DUID + CPSFAMID. Corresponding weight is FAMWT14C. MEPS Family: ID is DUID + FAMIDYR. Corresponding weight is FAMWT14F. The CPS family is used in this exercise.</p>
+</blockquote>
+<pre><code>
+. set more off
+
+. loc vars dupersid duid cpsfamid famwt14c varstr varpsu totslf14 ttlp14x
+
+. use `vars' using "README-files/meps_hc_2014.dta", clear
+
+. 
+. sort duid cpsfamid
+
+. list duid cpsfamid totslf14 ttlp14x in 1/20, sepby(duid)
+
+     +---------------------------------------+
+     |  duid   cpsfamid   totslf14   ttlp14x |
+     |---------------------------------------|
+  1. | 40001          A        135         0 |
+  2. | 40001          A         89         0 |
+  3. | 40001          A        165     12000 |
+  4. | 40001          A        152     56000 |
+     |---------------------------------------|
+  5. | 40002          A          2     27030 |
+     |---------------------------------------|
+  6. | 40004          A         80         0 |
+  7. | 40004          A        141         0 |
+  8. | 40004          A          0         0 |
+  9. | 40004          A          0     12000 |
+ 10. | 40004          A         12         0 |
+ 11. | 40004          A          0         0 |
+ 12. | 40004          A        159         0 |
+ 13. | 40004          A          0         0 |
+     |---------------------------------------|
+ 14. | 40005          A       2919     39945 |
+     |---------------------------------------|
+ 15. | 40009          A         52     34031 |
+     |---------------------------------------|
+ 16. | 40010          A        210         0 |
+ 17. | 40010          A        614     84000 |
+ 18. | 40010          A         56         0 |
+ 19. | 40010          A         40     56000 |
+     |---------------------------------------|
+ 20. | 40011          A          0         0 |
+     +---------------------------------------+
+
+. 
+. by duid cpsfamid: egen famoop = sum(totslf14)
+
+. by duid cpsfamid: egen faminc = sum(ttlp14x)
+
+. by duid cpsfamid: gen  famsize = _N
+
+. 
+. list duid famwt14c famsize famoop faminc totslf14 ttlp14x in 1/20, sepby(duid
+&gt; )
+
+     +--------------------------------------------------------------------+
+     |  duid    famwt14c   famsize   famoop   faminc   totslf14   ttlp14x |
+     |--------------------------------------------------------------------|
+  1. | 40001    6540.855         4      541    68000        135         0 |
+  2. | 40001    6540.855         4      541    68000         89         0 |
+  3. | 40001    6540.855         4      541    68000        165     12000 |
+  4. | 40001    6540.855         4      541    68000        152     56000 |
+     |--------------------------------------------------------------------|
+  5. | 40002   8827.9997         1        2    27030          2     27030 |
+     |--------------------------------------------------------------------|
+  6. | 40004   3883.9568         8      392    12000         80         0 |
+  7. | 40004   3883.9568         8      392    12000        141         0 |
+  8. | 40004   3883.9568         8      392    12000          0         0 |
+  9. | 40004   3883.9568         8      392    12000          0     12000 |
+ 10. | 40004   3883.9568         8      392    12000         12         0 |
+ 11. | 40004   3883.9568         8      392    12000          0         0 |
+ 12. | 40004   3883.9568         8      392    12000        159         0 |
+ 13. | 40004           0         8      392    12000          0         0 |
+     |--------------------------------------------------------------------|
+ 14. | 40005   4676.8667         1     2919    39945       2919     39945 |
+     |--------------------------------------------------------------------|
+ 15. | 40009   5826.4716         1       52    34031         52     34031 |
+     |--------------------------------------------------------------------|
+ 16. | 40010    7601.436         4      920   140000        210         0 |
+ 17. | 40010    7601.436         4      920   140000        614     84000 |
+ 18. | 40010    7601.436         4      920   140000         56         0 |
+ 19. | 40010    7601.436         4      920   140000         40     56000 |
+     |--------------------------------------------------------------------|
+ 20. | 40011   4747.9969         4        0    22500          0         0 |
+     +--------------------------------------------------------------------+
+
+. 
+. sort duid cpsfamid famwt14c
+
+. by duid cpsfamid: keep if _n==_N
+(19,875 observations deleted)
+
+. 
+. list duid cpsfamid famwt14c famsize famoop faminc in 1/20
+
+     +----------------------------------------------------------+
+     |  duid   cpsfamid    famwt14c   famsize   famoop   faminc |
+     |----------------------------------------------------------|
+  1. | 40001          A    6540.855         4      541    68000 |
+  2. | 40002          A   8827.9997         1        2    27030 |
+  3. | 40004          A   3883.9568         8      392    12000 |
+  4. | 40005          A   4676.8667         1     2919    39945 |
+  5. | 40009          A   5826.4716         1       52    34031 |
+     |----------------------------------------------------------|
+  6. | 40010          A    7601.436         4      920   140000 |
+  7. | 40011          A   4747.9969         4        0    22500 |
+  8. | 40012          A   13579.432         4      177   193561 |
+  9. | 40014          A   5232.9521         1      954        0 |
+ 10. | 40014          B   6675.6329         1        5    14720 |
+     |----------------------------------------------------------|
+ 11. | 40014          C   5180.2438         1        2        0 |
+ 12. | 40015          A   19589.164         3     2275    99945 |
+ 13. | 40016          A   4050.4395         3       21    13200 |
+ 14. | 40017          A   22006.184         3      648   200000 |
+ 15. | 40019          A   3638.4341         5      833    85536 |
+     |----------------------------------------------------------|
+ 16. | 40020          A   12530.817         5     1941    47881 |
+ 17. | 40021          A   4682.9354         4      782    20800 |
+ 18. | 40022          A   1887.6775         1        0    17000 |
+ 19. | 40022          B   5843.5936         4       37    50000 |
+ 20. | 40023          A   6209.2947         4     3417    82800 |
+     +----------------------------------------------------------+
+
+. 
+. // tabmiss: user-written command to tabulate missing values
+. tabmiss famsize famoop faminc
+    Variable |     Obs       Missings   Feq.Missings    NonMiss   Feq.NonMiss
+-------------+---------------------------------------------------------------
+     famsize |   15000           0            0          15000          100
+      famoop |   15000           0            0          15000          100
+      faminc |   15000           0            0          15000          100
+
+. 
+. keep if famwt14c &gt; 0
+(867 observations deleted)
+
+. svyset [pweight = famwt14c], strata(varstr) psu(varpsu) vce(linearized) singl
+&gt; eunit(missing)
+
+      pweight: famwt14c
+          VCE: linearized
+  Single unit: missing
+     Strata 1: varstr
+         SU 1: varpsu
+        FPC 1: &lt;zero&gt;
+
+. svy: mean famsize famoop faminc
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       14,133
+Number of PSUs   =     365      Population size =  140,282,371
+                                Design df       =          200
+
+--------------------------------------------------------------
+             |             Linearized
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+     famsize |   2.221791   .0205013      2.181364    2.262217
+      famoop |   1279.595   28.96032      1222.488    1336.702
+      faminc |   63373.64   1015.978      61370.24    65377.05
+--------------------------------------------------------------</code></pre>
+</div>
+<div id="use-and-expenditures-for-persons-with-diabetes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#use-and-expenditures-for-persons-with-diabetes" class="anchor"></a><del>Use and expenditures for persons with diabetes</del>
+</h3>
+</div>
+<div id="expenditures-for-all-events-associated-with-diabetes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#expenditures-for-all-events-associated-with-diabetes" class="anchor"></a><del>Expenditures for all events associated with diabetes</del>
+</h3>
+</div>
+<div id="pool-multiple-years-of-meps-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#pool-multiple-years-of-meps-data" class="anchor"></a>Pool multiple years of MEPS data</h3>
+<p>Pooling two-years of data requires recalculating personal weights.</p>
+<blockquote>
+<p>This exercise illustrates how to pool meps data files from different years the example used is population age 26-30 who are uninsured but have high income.</p>
+</blockquote>
+<blockquote>
+<p>Data from 2013 and 2014 are pooled.</p>
+</blockquote>
+<blockquote>
+<p>Variables with year specific names must be renamed before combining files in this program the insurance coverage variables ‘INSCOV13’ and ‘INSCOV14’ are renamed to ‘INSCOV’.</p>
+</blockquote>
+<pre><code>
+. // rename year specific variables prior to combining files
+. use dupersid inscov13 perwt13f varstr varpsu povcat13 agelast totslf13 using 
+&gt; "README-files/meps_hc_2013.dta", clear
+
+. rename inscov13 inscov
+
+. rename perwt13f perwt
+
+. rename povcat13 povcat
+
+. rename totslf13 totslf
+
+. tempfile yr1
+
+. save "`yr1'"
+file /var/folders/m8/68z5d14d7mv9qyf1bd69ych40000gn/T//St11005.000001 saved
+
+. 
+. use dupersid inscov14 perwt14f varstr varpsu povcat14 agelast totslf14 using 
+&gt; "README-files/meps_hc_2014.dta", clear
+
+. rename inscov14 inscov
+
+. rename perwt14f perwt
+
+. rename povcat14 povcat
+
+. rename totslf14 totslf
+
+. 
+. append using "`yr1'", generate(yearnum)
+
+. 
+. fre inscov
+
+inscov -- health insurance coverage indicator 14
+---------------------------------------------------------------------
+                        |      Freq.    Percent      Valid       Cum.
+------------------------+--------------------------------------------
+Valid   1 1 any private |      35914      50.01      50.01      50.01
+        2 2 public only |      24296      33.83      33.83      83.84
+        3 3 uninsured   |      11605      16.16      16.16     100.00
+        Total           |      71815     100.00     100.00           
+---------------------------------------------------------------------
+
+. fre povcat
+
+povcat -- family inc as % of poverty line - catego
+-----------------------------------------------------------------------
+                          |      Freq.    Percent      Valid       Cum.
+--------------------------+--------------------------------------------
+Valid   1 1 poor/negative |      17492      24.36      24.36      24.36
+        2 2 near poor     |       4636       6.46       6.46      30.81
+        3 3 low income    |      12504      17.41      17.41      48.22
+        4 4 middle income |      19791      27.56      27.56      75.78
+        5 5 high income   |      17392      24.22      24.22     100.00
+        Total             |      71815     100.00     100.00           
+-----------------------------------------------------------------------
+
+. 
+. gen poolwt = perwt / 2
+
+. gen subpop = (agelast &gt;= 26 &amp; agelast &lt;= 30 &amp; inscov == 3 &amp; povcat == 5)
+
+. 
+. tab1 agelast inscov povcat if subpop == 1
+
+-&gt; tabulation of agelast if subpop == 1 
+
+   person s |
+   age last |
+       time |
+   eligible |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         26 |         29       20.86       20.86
+         27 |         39       28.06       48.92
+         28 |         23       16.55       65.47
+         29 |         31       22.30       87.77
+         30 |         17       12.23      100.00
+------------+-----------------------------------
+      Total |        139      100.00
+
+-&gt; tabulation of inscov if subpop == 1 
+
+       health |
+    insurance |
+     coverage |
+ indicator 14 |      Freq.     Percent        Cum.
+--------------+-----------------------------------
+  3 uninsured |        139      100.00      100.00
+--------------+-----------------------------------
+        Total |        139      100.00
+
+-&gt; tabulation of povcat if subpop == 1 
+
+family inc as % |
+of poverty line |
+       - catego |      Freq.     Percent        Cum.
+----------------+-----------------------------------
+  5 high income |        139      100.00      100.00
+----------------+-----------------------------------
+          Total |        139      100.00
+
+. tab subpop yearnum
+
+           |        yearnum
+    subpop |         0          1 |     Total
+-----------+----------------------+----------
+         0 |    34,815     36,861 |    71,676 
+         1 |        60         79 |       139 
+-----------+----------------------+----------
+     Total |    34,875     36,940 |    71,8. summarize
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+    dupersid |          0
+     agelast |     71,815      34.882     22.4086          0         85
+      povcat |     71,815    3.208243    1.496595          1          5
+      inscov |     71,815    1.661505    .7396724          1          3
+      totslf |     71,815    421.1674    1447.036          0     108389
+-------------+---------------------------------------------------------
+       perwt |     71,815    8830.501    8581.434          0   94410.39
+      varstr |     71,815    1084.443    48.94023       1001       1165
+      varpsu |     71,815    1.637569    .6163208          1          3
+     yearnum |     71,815    .5143772    .4997967          0          1
+      poolwt |     71,815     4415.25    4290.717          0    47205.2
+-------------+---------------------------------------------------------
+      subpop |     71,815    .0019355    .0439524          0          1
+
+. tabmiss
+    Variable |     Obs       Missings   Feq.Missings    NonMiss   Feq.NonMiss
+-------------+---------------------------------------------------------------
+    dupersid |   71815           0            0          71815          100
+     agelast |   71815           0            0          71815          100
+      povcat |   71815           0            0          71815          100
+      inscov |   71815           0            0          71815          100
+      totslf |   71815           0            0          71815          100
+       perwt |   71815           0            0          71815          100
+      varstr |   71815           0            0          71815          100
+      varpsu |   71815           0            0          71815          100
+     yearnum |   71815           0            0          71815          100
+      poolwt |   71815           0            0          71815          100
+      subpop |   71815           0            0          71815          100
+
+. 
+. svyset [pweight = poolwt], strata(varstr) psu(varpsu) vce(linearized) singleu
+&gt; nit(missing)
+
+      pweight: poolwt
+          VCE: linearized
+  Single unit: missing
+     Strata 1: varstr
+         SU 1: varpsu
+        FPC 1: &lt;zero&gt;
+
+. 
+. // weighted estimate on totslf for combined data w/age=26-30, uninsured whole
+&gt;  year, and high income
+. svy, subpop(subpop): mean totslf
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =      73      Number of obs   =       37,121
+Number of PSUs   =     169      Population size =  152,825,959
+                                Subpop. no. obs =          114
+                                Subpop. size    = 606,952.6488
+                                Design df       =           96
+
+--------------------------------------------------------------
+             |             Linearized
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      totslf |   198.7844   64.22224      71.30424    326.2645
+--------------------------------------------------------------
+Note: 92 strata omitted because they contain no subpopulation
+      members.</code></pre>
+</div>
+<div id="construct-insurance-status-variables-from-monthly-insurance-variables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#construct-insurance-status-variables-from-monthly-insurance-variables" class="anchor"></a>Construct insurance status variables from monthly insurance variables</h3>
+<blockquote>
+<p>This exercise illustrates how to construct insurance status variables from monthly insurance variables (see below) in the person level data.</p>
+</blockquote>
+<table class="table">
+<thead><tr class="header">
+<th>Variable Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>TRImm14X</td>
+<td>Covered by TRICARE/CHAMPVA in mm (Ed)</td>
+</tr>
+<tr class="even">
+<td>MCRmm14</td>
+<td>Covered by Medicare in mm</td>
+</tr>
+<tr class="odd">
+<td>MCRmm14X</td>
+<td>Covered by Medicare in mm (Ed)</td>
+</tr>
+<tr class="even">
+<td>MCDmm14</td>
+<td>Covered by Medicaid or SCHIP in mm</td>
+</tr>
+<tr class="odd">
+<td>MCDmm14X</td>
+<td>Covered by Medicaid or SCHIP in mm (Ed)</td>
+</tr>
+<tr class="even">
+<td>OPAmm14</td>
+<td>Covered by Other Public A Ins in mm</td>
+</tr>
+<tr class="odd">
+<td>OPBmm14</td>
+<td>Covered by Other Public B Ins in mm</td>
+</tr>
+<tr class="even">
+<td>PUBmm14X</td>
+<td>Covered by Any Public Ins in mm (Ed)</td>
+</tr>
+<tr class="odd">
+<td>PEGmm14</td>
+<td>Covered by Empl Union Ins in mm</td>
+</tr>
+<tr class="even">
+<td>PDKmm14</td>
+<td>Coverer by Priv Ins (Source Unknown) in mm</td>
+</tr>
+<tr class="odd">
+<td>PNGmm14</td>
+<td>Covered by Nongroup Ins in mm</td>
+</tr>
+<tr class="even">
+<td>POGmm14</td>
+<td>Covered by Other Group Ins in mm</td>
+</tr>
+<tr class="odd">
+<td>PRSmm14</td>
+<td>Covered by Self-Emp Ins in mm</td>
+</tr>
+<tr class="even">
+<td>POUmm14</td>
+<td>Covered by Holder Outside of RU in mm</td>
+</tr>
+<tr class="odd">
+<td>PRImm14</td>
+<td>Covered by Private Ins in mm</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>where mm = JA-DE (January - December)</p>
+</blockquote>
+<pre><code>
+. use dupersid varstr varpsu perwt14f racethx peg??14 pou??14 pdk??14 png??14 p
+&gt; og??14 prs??14 pri??14 ins??14x mcd??14x mcr??14x tri??14x opa??14 opb??14 us
+&gt; ing "README-files/meps_hc_2014.dta", clear
+
+. 
+. local opalist opaja14 opafe14 opama14 opaap14 opamy14 opaju14 opajl14 opaau14
+&gt;  opase14 opaoc14 opano14 opade14
+
+. local opblist opbja14 opbfe14 opbma14 opbap14 opbmy14 opbju14 opbjl14 opbau14
+&gt;  opbse14 opboc14 opbno14 opbde14
+
+. local peglist pegja14 pegfe14 pegma14 pegap14 pegmy14 pegju14 pegjl14 pegau14
+&gt;  pegse14 pegoc14 pegno14 pegde14
+
+. local trilist trija14x trife14x trima14x triap14x trimy14x triju14x trijl14x 
+&gt; triau14x trise14x trioc14x trino14x tride14x
+
+. local poulist pouja14 poufe14 pouma14 pouap14 poumy14 pouju14 poujl14 pouau14
+&gt;  pouse14 pouoc14 pouno14 poude14
+
+. local pdklist pdkja14 pdkfe14 pdkma14 pdkap14 pdkmy14 pdkju14 pdkjl14 pdkau14
+&gt;  pdkse14 pdkoc14 pdkno14 pdkde14
+
+. local pnglist pngja14 pngfe14 pngma14 pngap14 pngmy14 pngju14 pngjl14 pngau14
+&gt;  pngse14 pngoc14 pngno14 pngde14
+
+. local poglist pogja14 pogfe14 pogma14 pogap14 pogmy14 pogju14 pogjl14 pogau14
+&gt;  pogse14 pogoc14 pogno14 pogde14
+
+. local prslist prsja14 prsfe14 prsma14 prsap14 prsmy14 prsju14 prsjl14 prsau14
+&gt;  prsse14 prsoc14 prsno14 prsde14
+
+. local mcrlist mcrja14x mcrfe14x mcrma14x mcrap14x mcrmy14x mcrju14x mcrjl14x 
+&gt; mcrau14x mcrse14x mcroc14x mcrno14x mcrde14x
+
+. local mcdlist mcdja14x mcdfe14x mcdma14x mcdap14x mcdmy14x mcdju14x mcdjl14x 
+&gt; mcdau14x mcdse14x mcdoc14x mcdno14x mcdde14x
+
+. local prilist prija14 prife14 prima14 priap14 primy14 priju14 prijl14 priau14
+&gt;  prise14 prioc14 prino14 pride14
+
+. local inslist insja14x insfe14x insma14x insap14x insmy14x insju14x insjl14x 
+&gt; insau14x insse14x insoc14x insno14x insde14x
+
+. 
+. * 1) count number of months with insurance
+. egen pri_n = anycount(`prilist'), v(1)
+
+. egen ins_n = anycount(`inslist'), v(1)
+
+. egen unins_n = anycount(`inslist'), v(2)
+
+. egen mcd_n = anycount(`mcdlist'), v(1)
+
+. egen mcr_n = anycount(`mcrlist'), v(1)
+
+. egen tri_n = anycount(`trilist'), v(1)
+
+. egen ref_n = anycount(`inslist'), v(1 2)
+
+. 
+. *2) create flags for various types of insu
+. forval i = 1/12 {
+  2.        local opa = word("`opalist'",`i')
+  3.        local opb = word("`opblist'",`i')
+  4.        gen op`i' = (`opa' == 1 | `opb' == 1)
+  5.        }
+
+. egen opab_n = anycount(op1-op12), v(1)
+
+. 
+. forval i = 1/12 {
+  2.        local peg = word("`peglist'",`i')
+  3.        local tri = word("`trilist'",`i')
+  4.        local pou = word("`poulist'",`i')
+  5.        local pdk = word("`pdklist'",`i')
+  6.        gen grp`i' = (`peg' == 1 | `tri' == 1 |`pou' == 1 | `pdk' == 1)
+  7.        }
+
+. egen grp_n = anycount(grp1-grp12), v(1)
+
+. 
+. forval i=1/12 {
+  2.        local png = word("`pnglist'",`i')
+  3.        local pog = word("`poglist'",`i')
+  4.        local prs = word("`prslist'",`i')
+  5.        gen ng`i' = (`png' == 1 | `pog' == 1 |`prs' == 1)
+  6.        }
+
+. egen ng_n = anycount(ng1-ng12), v(1)
+
+. 
+. forval i=1/12 {
+  2.        local mcr = word("`mcrlist'",`i')
+  3.        local mcd = word("`mcdlist'",`i')
+  4.        local opa = word("`opalist'",`i')
+  5.        local opb = word("`opblist'",`i')
+  6.        gen pub`i' = (`mcr' == 1 | `mcd' == 1 |`opa' == 1 | `opb' == 1)
+  7.        }
+
+. egen pub_n = anycount(pub1-pub12), v(1)
+
+. 
+. gen full_insu = (unins_n == 0)
+
+. gen group_ins1 = (grp_n &gt; 0)
+
+. gen group_ins2 = (grp_n &gt; 0 &amp; grp_n == ref_n)
+
+. gen ng_ins = (ng_n &gt; 0)
+
+. 
+. tab1 pri_n ins_n unins_n mcd_n mcr_n tri_n opab_n grp_n ng_n pub_n ref_n 
+
+-&gt; tabulation of pri_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of ins_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of unins_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      4,968       14.25       14.25
+          1 |        194        0.56       14.80
+          2 |        274        0.79       15.59
+          3 |        316        0.91       16.49
+          4 |        407        1.17       17.66
+          5 |        503        1.44       19.10
+          6 |        504        1.45       20.55
+          7 |        456        1.31       21.86
+          8 |        634        1.82       23.67
+          9 |        703        2.02       25.69
+         10 |        692        1.98       27.67
+         11 |        687        1.97       29.64
+         12 |     24,537       70.36      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of mcd_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of mcr_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of tri_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of opab_n  
+
+op1 op2 op3 |
+op4 op5 op6 |
+op7 op8 op9 |
+  op10 op11 |
+  op12 == 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of grp_n  
+
+  grp1 grp2 |
+  grp3 grp4 |
+  grp5 grp6 |
+  grp7 grp8 |
+ grp9 grp10 |
+grp11 grp12 |
+       == 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of ng_n  
+
+ng1 ng2 ng3 |
+ng4 ng5 ng6 |
+ng7 ng8 ng9 |
+  ng10 ng11 |
+  ng12 == 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of pub_n  
+
+  pub1 pub2 |
+  pub3 pub4 |
+  pub5 pub6 |
+  pub7 pub8 |
+ pub9 pub10 |
+pub11 pub12 |
+       == 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |        142        0.41       95.97
+          2 |        145        0.42       96.39
+          3 |        137        0.39       96.78
+          4 |        149        0.43       97.21
+          5 |        168        0.48       97.69
+          6 |        170        0.49       98.18
+          7 |        134        0.38       98.56
+          8 |        154        0.44       99.01
+          9 |        135        0.39       99.39
+         10 |        125        0.36       99.75
+         11 |         87        0.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of ref_n  
+
+  see notes |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      4,558       13.07       13.07
+          1 |        170        0.49       13.56
+          2 |        206        0.59       14.15
+          3 |        251        0.72       14.87
+          4 |        306        0.88       15.74
+          5 |        437        1.25       17.00
+          6 |        415        1.19       18.19
+          7 |        403        1.16       19.34
+          8 |        578        1.66       21.00
+          9 |        679        1.95       22.95
+         10 |        656        1.88       24.83
+         11 |        682        1.96       26.78
+         12 |     25,534       73.22      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+. tab1 full_ins group_ins1 group_ins2 ng_ins
+
+-&gt; tabulation of full_insu  
+
+  full_insu |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     29,907       85.75       85.75
+          1 |      4,968       14.25      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of group_ins1  
+
+ group_ins1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |      1,546        4.43      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of group_ins2  
+
+ group_ins2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     34,465       98.82       98.82
+          1 |        410        1.18      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+-&gt; tabulation of ng_ins  
+
+     ng_ins |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |     33,329       95.57       95.57
+          1 |      1,546        4.43      100.00
+------------+-----------------------------------
+      Total |     34,875      100.00
+
+. tab full_insu unins_n
+
+           |                       see notes
+ full_insu |         0          1          2          3          4 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |         0        194        274        316        407 |    29,907 
+         1 |     4,968          0          0          0          0 |     4,968 
+-----------+-------------------------------------------------------+----------
+     Total |     4,968        194        274        316        407 |    34,8           |                       see notes
+ full_insu |         5          6          7          8          9 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |       503        504        456        634        703 |    29,907 
+         1 |         0          0          0          0          0 |     4,968 
+-----------+-------------------------------------------------------+----------
+     Total |       503        504        456        634        703 |    34,875 
+
+           |            see notes
+ full_insu |        10         11         12 |     Total
+-----------+---------------------------------+----------
+         0 |       692        687     24,537 |    29,907 
+         1 |         0          0          0 |     4,968 
+-----------+---------------------------------+----------
+     Total |       692        687     24,537 |    34,875 
+
+
+. tab group_ins1 grp_n
+
+           |   grp1 grp2 grp3 grp4 grp5 grp6 grp7 grp8 grp9 grp10
+           |                    grp11 grp12 == 1
+group_ins1 |         0          1          2          3          4 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |    33,329          0          0          0          0 |    33,329 
+         1 |         0        142        145        137        149 |     1,546 
+-----------+-------------------------------------------------------+----------
+     Total |    33,329        142        145        137        149 |    34,875 
+
+           |   grp1 grp2 grp3 grp4 grp5 grp6 grp7 grp8 grp9 grp10
+           |                    grp11 grp12 == 1
+group_ins1 |         5          6          7          8          9 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |         0          0          0          0          0 |    33,329 
+         1 |       168        170        134        154        135 |     1,546 
+-----------+-------------------------------------------------------+----------
+     Total |       168        170        134        154        135 |    34,875 
+
+           |  grp1 grp2 grp3 grp4
+           |  grp5 grp6 grp7 grp8
+           |   grp9 grp10 grp11
+           |      grp12 == 1
+group_ins1 |        10         11 |     Total
+-----------+----------------------+----------
+         0 |         0          0 |    33,329 
+         1 |       125         87 |     1,546 
+-----------+----------------------+----------
+     Total |       125         87 |    34,875 
+
+
+. tab ng_ins ng_n
+
+           | ng1 ng2 ng3 ng4 ng5 ng6 ng7 ng8 ng9 ng10 ng11 ng12 ==
+           |                           1
+    ng_ins |         0          1          2          3          4 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |    33,329          0          0          0          0 |    33,329 
+         1 |         0        142        145        137        149 |     1,546 
+-----------+-------------------------------------------------------+----------
+     Total |    33,329        142        145        137        149 |    34,875 
+
+           | ng1 ng2 ng3 ng4 ng5 ng6 ng7 ng8 ng9 ng10 ng11 ng12 ==
+           |                           1
+    ng_ins |         5          6          7          8          9 |     Total
+-----------+-------------------------------------------------------+----------
+         0 |         0          0          0          0          0 |    33,329 
+         1 |       168        170        134        154        135 |     1,546 
+-----------+-------------------------------------------------------+----------
+     Total |       168        170        134        154        135 |    34,875 
+
+           |  ng1 ng2 ng3 ng4 ng5
+           | ng6 ng7 ng8 ng9 ng10
+           |    ng11 ng12 == 1
+    ng_ins |        10         11 |     Total
+-----------+----------------------+----------
+         0 |         0          0 |    33,329 
+         1 |       125         87 |     1,546 
+-----------+----------------------+----------
+     Total |       125         87 |    34,875 
+
+
+. 
+. *3) calculate % of persons covered by insu
+. svyset [pweight=perwt14f], strata(varstr) psu(varpsu) vce(linearized) singleu
+&gt; nit(missing)
+
+      pweight: perwt14f
+          VCE: linearized
+  Single unit: missing
+     Strata 1: varstr
+         SU 1: varpsu
+        FPC 1: &lt;zero&gt;
+
+. svy: mean full_insu group_ins1 group_ins2 ng_ins, over(racethx)
+(running mean on estimation sample)
+
+Survey: Mean estimation
+
+Number of strata =     165      Number of obs   =       34,875
+Number of PSUs   =     366      Population size =  318,440,423
+                                Design df       =          201
+
+    _subpop_1: racethx = 1 hispanic
+    _subpop_2: racethx = 2 non-hispanic white only
+    _subpop_3: racethx = 3 non-hispanic black only
+    _subpop_4: racethx = 4 non-hispanic asian only
+    _subpop_5: racethx = 5 non-hispanic other race or mul
+
+--------------------------------------------------------------
+             |             Linearized
+        Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+full_insu    |
+   _subpop_1 |   .2151917   .0101965      .1950859    .2352974
+   _subpop_2 |   .0643303   .0037492      .0569375    .0717231
+   _subpop_3 |   .1163546   .0064317      .1036724    .1290368
+   _subpop_4 |   .0812691   .0086048      .0643018    .0982365
+   _subpop_5 |   .0724555   .0122909      .0482198    .0966912
+-------------+------------------------------------------------
+group_ins1   |
+   _subpop_1 |   .0264375   .0021425      .0222127    .0306622
+   _subpop_2 |   .0223652   .0017007      .0190117    .0257186
+   _subpop_3 |   .0287738   .0029039      .0230478    .0344998
+   _subpop_4 |    .015177   .0029016      .0094555    .0208985
+   _subpop_5 |   .0338332   .0071045      .0198242    .0478421
+-------------+------------------------------------------------
+group_ins2   |
+   _subpop_1 |   .0052626   .0008027      .0036799    .0068453
+   _subpop_2 |   .0020584   .0004588      .0011537     .002963
+   _subpop_3 |    .003538   .0007966      .0019673    .0051087
+   _subpop_4 |   .0025967   .0011545      .0003201    .0048732
+   _subpop_5 |   .0036661   .0023261     -.0009206    .0082527
+-------------+------------------------------------------------
+ng_ins       |
+   _subpop_1 |   .0264375   .0021425      .0222127    .0306622
+   _subpop_2 |   .0223652   .0017007      .0190117    .0257186
+   _subpop_3 |   .0287738   .0029039      .0230478    .0344998
+   _subpop_4 |    .015177   .0029016      .0094555    .0208985
+   _subpop_5 |   .0338332   .0071045      .0198242    .0478421
+--------------------------------------------------------------</code></pre>
+</div>
+<div id="pool-longitudinal-files" class="section level3">
+<h3 class="hasAnchor">
+<a href="#pool-longitudinal-files" class="anchor"></a>Pool longitudinal files</h3>
+<p>See the example in the <a href="https://github.com/jjchern/meps.panel#pool-three-panels-of-data"><code>meps.panel</code> readme</a>.</p>
+</div>
+</div>
+<div id="more-examples" class="section level2">
+<h2 class="hasAnchor">
+<a href="#more-examples" class="anchor"></a>More Examples</h2>
+<ul>
+<li><a href="https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Damico.pdf">Transitioning to R: Replicating SAS, Stata, and SUDAAN Analysis Techniques in Health Policy Data</a></li>
+</ul>
 </div>
 </div>
 </div>

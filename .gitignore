@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 README_cache
+README-files/*dta
+docs/README-files/*dta
