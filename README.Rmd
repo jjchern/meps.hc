@@ -30,9 +30,11 @@ For another attempt of downloading the MEPS data, see [the `ajdamico/asdfree` re
 
 Currently the package includes data from 2011-2014. The rest of the files (1996-2010) will be packaged soon.
 
-Related R data packages:
+# All MEPS-Related R data packages:
 
+- Full Year Consolidated Files: [`meps.hc`](https://github.com/jjchern/meps.hc)
 - Person Round Plan Files: [`meps.prpl`](https://github.com/jjchern/meps.prpl)
+- Two-Years Longitudinal Files: [`meps.panel`](https://github.com/jjchern/meps.panel)
 
 # Installation
 
