@@ -89,6 +89,53 @@ devtools::<span class="kw">install_github</span>(<span class="st">"jjchern/meps.
 <span class="co"># To uninstall the package, use:</span>
 <span class="co"># remove.packages("meps.hc")</span></code></pre></div>
 </div>
+<div id="usage" class="section level1">
+<h1 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load tibble for better printout</span>
+<span class="kw">library</span>(tibble)
+
+meps.hc::f2014
+<span class="co">#&gt; # A tibble: 34,875 x 1,838</span>
+<span class="co">#&gt;     duid   pid dupersid       panel famid31 famid42 famid53 famid14</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;chr&gt;      &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;</span>
+<span class="co">#&gt;  1 40001   101 40001101 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  2 40001   102 40001102 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  3 40001   103 40001103 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  4 40001   104 40001104 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  5 40002   101 40002101 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  6 40004   101 40004101 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  7 40004   102 40004102 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  8 40004   103 40004103 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt;  9 40004   104 40004104 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt; 10 40004   105 40004105 18 panel 18       A       A       A       A</span>
+<span class="co">#&gt; # ... with 34,865 more rows, and 1830 more variables: famidyr &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   cpsfamid &lt;fctr&gt;, fcsz1231 &lt;dbl&gt;, fcrp1231 &lt;fctr&gt;, ruletr31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   ruletr42 &lt;fctr&gt;, ruletr53 &lt;fctr&gt;, ruletr14 &lt;fctr&gt;, rusize31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   rusize42 &lt;fctr&gt;, rusize53 &lt;fctr&gt;, rusize14 &lt;fctr&gt;, ruclas31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   ruclas42 &lt;fctr&gt;, ruclas53 &lt;fctr&gt;, ruclas14 &lt;fctr&gt;, famsze31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   famsze42 &lt;fctr&gt;, famsze53 &lt;fctr&gt;, famsze14 &lt;dbl&gt;, fmrs1231 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   fams1231 &lt;dbl&gt;, famszeyr &lt;dbl&gt;, famrfpyr &lt;fctr&gt;, region31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   region42 &lt;fctr&gt;, region53 &lt;fctr&gt;, region14 &lt;fctr&gt;, refprs31 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   refprs42 &lt;dbl&gt;, refprs53 &lt;dbl&gt;, refprs14 &lt;dbl&gt;, resp31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   resp42 &lt;fctr&gt;, resp53 &lt;fctr&gt;, resp14 &lt;fctr&gt;, proxy31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   proxy42 &lt;fctr&gt;, proxy53 &lt;fctr&gt;, proxy14 &lt;fctr&gt;, intvlang &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   begrfm31 &lt;fctr&gt;, begrfy31 &lt;fctr&gt;, endrfm31 &lt;fctr&gt;, endrfy31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   begrfm42 &lt;fctr&gt;, begrfy42 &lt;fctr&gt;, endrfm42 &lt;fctr&gt;, endrfy42 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   begrfm53 &lt;fctr&gt;, begrfy53 &lt;fctr&gt;, endrfm53 &lt;fctr&gt;, endrfy53 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   endrfm14 &lt;fctr&gt;, endrfy14 &lt;fctr&gt;, keyness &lt;fctr&gt;, inscop31 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   inscop42 &lt;fctr&gt;, inscop53 &lt;fctr&gt;, inscop14 &lt;fctr&gt;, insc1231 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   inscope &lt;fctr&gt;, elgrnd31 &lt;fctr&gt;, elgrnd42 &lt;fctr&gt;, elgrnd53 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   elgrnd14 &lt;fctr&gt;, pstats31 &lt;fctr&gt;, pstats42 &lt;fctr&gt;, pstats53 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   rurslt31 &lt;fctr&gt;, rurslt42 &lt;fctr&gt;, rurslt53 &lt;fctr&gt;, age31x &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   age42x &lt;dbl&gt;, age53x &lt;dbl&gt;, age14x &lt;dbl&gt;, agelast &lt;dbl&gt;, dobmm &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   dobyy &lt;fctr&gt;, sex &lt;fctr&gt;, racev1x &lt;fctr&gt;, racev2x &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   raceax &lt;fctr&gt;, racebx &lt;fctr&gt;, racewx &lt;fctr&gt;, racethx &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   hispanx &lt;fctr&gt;, hispncat &lt;fctr&gt;, marry31x &lt;fctr&gt;, marry42x &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   marry53x &lt;fctr&gt;, marry14x &lt;fctr&gt;, spouid31 &lt;fctr&gt;, spouid42 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   spouid53 &lt;fctr&gt;, spouid14 &lt;fctr&gt;, spouin31 &lt;fctr&gt;, spouin42 &lt;fctr&gt;,</span>
+<span class="co">#&gt; #   spouin53 &lt;fctr&gt;, spouin14 &lt;fctr&gt;, ...</span></code></pre></div>
+</div>
 </div>
   </div>
 
